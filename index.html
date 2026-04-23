@@ -1,20 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
-  <head>
-    <meta charset="UTF-8">
-    <title>VICEROY DRONE SYNTH ULTIMATE (DEEPLEARNING)</title>
-    
-
-  </head>
-    
-  <body>
-  <!DOCTYPE html>
-<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VICEROY DRONE SYNTH ULTIMATE 3.1</title>
+  <title>VICEROY DRONE SYNTH ULTIMATE 3.2 (FIXED)</title>
   <style>
     :root{
       --bg: #111;
@@ -28,9 +17,7 @@
       --tab-active: #0ff3;
       --tab-inactive: #0ff1;
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
       background: radial-gradient(1200px 600px at 50% -10%, #0ff1 0%, #000 55%), var(--bg);
       color: #fff;
@@ -41,8 +28,6 @@
       align-items: center;
       justify-content: center;
     }
-    
-    /* DRAG DROP OVERLAY */
     body.dragover::after {
       content: "DROP AUDIO FILE TO LOAD INTO GRANULAR ENGINE";
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -51,7 +36,6 @@
       font-weight: bold; z-index: 9999; pointer-events: none;
       border: 5px dashed #0ff;
     }
-
     .synth{
       position: relative;
       width: 100%;
@@ -62,7 +46,6 @@
       box-shadow: 0 22px 46px -16px #000e, inset 0 1px 0 #ffffff0a, inset 0 -1px 0 #000000b0,
                   0 0 0 2px #0ff1, 0 0 40px #0ff1;
     }
-
     .synth::before, .synth::after{
       content:""; position:absolute; width:14px; height:14px; border-radius:50%;
       background: radial-gradient(circle at 40% 40%, #ffffff33 0 28%, transparent 30%),
@@ -72,7 +55,6 @@
       top:10px; left:10px;
     }
     .synth::after{ top:auto; left:auto; right:10px; bottom:10px; }
-
     h1{
       color: var(--accent);
       text-shadow: 0 0 8px #0ff8, 0 0 2px #0ff;
@@ -85,7 +67,6 @@
       padding-bottom: 10px;
       border-bottom: 2px solid #0ff2;
     }
-
     .controls-header{
       display: flex;
       gap: 10px;
@@ -93,7 +74,6 @@
       flex-wrap: wrap;
       justify-content: center;
     }
-
     button{
       background: linear-gradient(180deg, #19dede, #0cc);
       border: 1px solid #0ff8;
@@ -110,7 +90,7 @@
     }
     button:hover{ filter: brightness(1.07); }
     button:active{ transform: translateY(1px); }
-
+    button:disabled{ opacity: 0.5; cursor: not-allowed; }
     .tab-container{
       display: flex;
       gap: 6px;
@@ -120,7 +100,6 @@
       flex-wrap: wrap;
       justify-content: center;
     }
-
     .tab-btn{
       background: linear-gradient(180deg, #2a3537, #1c2426);
       border: 1px solid var(--tab-inactive);
@@ -136,25 +115,18 @@
       color: #111;
       box-shadow: 0 0 12px #0ff6;
     }
-
-    .tab-content{
-      display: none;
-      animation: fadeIn .3s ease;
-    }
+    .tab-content{ display: none; animation: fadeIn .3s ease; }
     .tab-content.active{ display: block; }
-
     @keyframes fadeIn{
       from{ opacity: 0; transform: translateY(-10px); }
       to{ opacity: 1; transform: translateY(0); }
     }
-
     .controls-grid{
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 16px;
       margin-bottom: 20px;
     }
-
     .knob-group{
       background: radial-gradient(220px 60px at 50% -20px, #0ff10 0, transparent 60%),
                   linear-gradient(180deg, #171b1c, #131718);
@@ -163,7 +135,6 @@
       padding: 12px;
       box-shadow: inset 0 1px 0 #ffffff10, inset 0 -1px 0 #000000cc, 0 10px 18px -12px #000f;
     }
-
     .knob-group h3{
       color: var(--accent);
       font-size: .85rem;
@@ -173,7 +144,6 @@
       text-align: center;
       opacity: .9;
     }
-
     .knob-row{
       display: grid;
       grid-template-columns: 100px 1fr;
@@ -182,7 +152,6 @@
       margin-bottom: 8px;
     }
     .knob-row:last-child{ margin-bottom: 0; }
-
     label{
       font-weight: 700;
       font-size: .75rem;
@@ -191,7 +160,6 @@
       color: var(--ink);
       text-align: left;
     }
-
     .knob, input[type="range"]{
       -webkit-appearance: none;
       appearance: none;
@@ -202,9 +170,7 @@
       cursor: pointer;
       background: linear-gradient(180deg, var(--track-hi), var(--track));
       box-shadow: inset 0 2px 3px #0009, inset 0 -1px 0 #ffffff0a, 0 0 0 1px #0ff3;
-      position: relative;
     }
-
     .knob::-webkit-slider-thumb{
       -webkit-appearance: none;
       width: 18px; height: 18px;
@@ -212,17 +178,14 @@
       background: linear-gradient(180deg, var(--accent-hi), var(--accent));
       box-shadow: 0 2px 8px #00ffff66, inset 0 0 0 2px #ffffff26, inset 0 -3px 6px #0009;
     }
-
     .knob::-moz-range-thumb{
       width: 18px; height: 18px; border-radius: 6px; border: 0;
       background: linear-gradient(180deg, var(--accent-hi), var(--accent));
-      box-shadow: 0 2px 8px #00ffff66, inset 0 0 0 2px #ffffff26, inset 0 -3px 6px #0009;
+      box-shadow: 0 2px 8px #00ffff66;
     }
-
     .knob:hover{
       box-shadow: inset 0 2px 3px #0009, inset 0 -1px 0 #ffffff12, 0 0 0 1px #0ff7, 0 0 14px #0ff2;
     }
-
     .xy-pad{
       width: 100%;
       height: 250px;
@@ -233,8 +196,8 @@
       cursor: crosshair;
       margin: 10px 0;
       box-shadow: inset 0 2px 6px #0009;
+      touch-action: none;
     }
-
     .xy-cursor{
       position: absolute;
       width: 20px;
@@ -245,14 +208,12 @@
       pointer-events: none;
       box-shadow: 0 0 12px #0ff8, inset 0 0 8px #0ff4;
     }
-    
     .viz-wrapper {
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        gap: 10px;
-        margin-top: 10px;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 10px;
+      margin-top: 10px;
     }
-
     canvas{
       width: 100%;
       height: 120px;
@@ -263,7 +224,6 @@
                   linear-gradient(180deg, #0a0f10, #0c1214);
       box-shadow: inset 0 1px 0 #ffffff12, inset 0 -1px 0 #000a, 0 8px 18px -10px #000c;
     }
-
     .preset-row{
       display: flex;
       gap: 8px;
@@ -271,11 +231,9 @@
       flex-wrap: wrap;
       justify-content: center;
     }
-
     .led-indicator{
       display: inline-block;
-      width: 8px;
-      height: 8px;
+      width: 8px; height: 8px;
       border-radius: 50%;
       background: #333;
       margin-left: 6px;
@@ -286,14 +244,12 @@
       background: var(--accent);
       box-shadow: 0 0 8px #0ff8, inset 0 0 4px #fff;
     }
-
     .macro-controls{
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 12px;
       margin: 15px 0;
     }
-    
     .tectonic-timeline {
       margin-top: 20px;
       background: #0003;
@@ -302,27 +258,32 @@
     }
     .timeline-label { font-size: 0.7rem; color: var(--accent); margin-bottom: 2px; }
     .timeline-bar { height: 4px; background: #333; position: relative; margin-bottom: 10px; border-radius: 2px; }
-    .timeline-progress { height: 100%; background: var(--accent); width: 0%; box-shadow: 0 0 5px var(--accent); }
+    .timeline-progress { height: 100%; background: var(--accent); width: 0%; box-shadow: 0 0 5px var(--accent); transition: width 0.5s linear; }
     .timeline-marker { position: absolute; top: -3px; width: 2px; height: 10px; background: #fff; }
-    
-    /* MATRIX STYLES */
     .matrix-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 30px;
-        gap: 5px;
-        margin-bottom: 5px;
-        background: #0004;
-        padding: 5px;
-        border-radius: 4px;
-        align-items: center;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 30px;
+      gap: 5px;
+      margin-bottom: 5px;
+      background: #0004;
+      padding: 5px;
+      border-radius: 4px;
+      align-items: center;
     }
     .matrix-row select {
-        background: #111; color: var(--accent); border: 1px solid #333; font-size: 0.75rem;
+      background: #111; color: var(--accent); border: 1px solid #333; font-size: 0.75rem; padding: 2px;
     }
-    .matrix-add {
-        width: 100%; margin-top: 10px; font-size: 0.7rem; padding: 5px;
+    .matrix-add { width: 100%; margin-top: 10px; font-size: 0.7rem; padding: 5px; }
+    .fix-badge {
+      display: inline-block;
+      background: #0ff2;
+      color: #0ff;
+      font-size: 0.6rem;
+      padding: 1px 4px;
+      border-radius: 3px;
+      margin-left: 4px;
+      letter-spacing: 0.05em;
     }
-
     @media (max-width: 768px){
       .controls-grid{ grid-template-columns: 1fr; }
       .macro-controls{ grid-template-columns: 1fr; }
@@ -333,8 +294,8 @@
 </head>
 <body>
   <div class="synth">
-    <h1>Viceroy Drone Synth Ultimate 3.1</h1>
-    
+    <h1>Viceroy Drone Synth Ultimate 3.2 <span style="font-size:0.7rem;opacity:0.6">[20 FIXES APPLIED]</span></h1>
+
     <div class="controls-header">
       <button id="toggleDrone">Start Drone</button>
       <button id="recordBtn">Start Recording</button>
@@ -350,262 +311,127 @@
       <button class="tab-btn" data-tab="texture">Texture</button>
       <button class="tab-btn" data-tab="effects">Effects</button>
       <button class="tab-btn" data-tab="modulation">Modulation</button>
-      <button class="tab-btn" data-tab="matrix" style="color: #fa0; border-color: #fa04;">Matrix</button>
+      <button class="tab-btn" data-tab="matrix" style="color:#fa0;border-color:#fa04;">Matrix</button>
       <button class="tab-btn" data-tab="master">Master</button>
     </div>
 
+    <!-- OSCILLATORS TAB -->
     <div class="tab-content active" data-tab="oscillators">
       <div class="controls-grid">
         <div class="knob-group">
           <h3>Sine <span class="led-indicator" data-voice="sine"></span></h3>
-          <div class="knob-row">
-            <label>Volume</label>
-            <input type="range" min="0" max="1" step="0.01" value="0" data-type="sine" class="knob volume">
-          </div>
-          <div class="knob-row">
-            <label>Pitch (Hz)</label>
-            <input type="range" min="40" max="200" step="1" value="110" data-type="sine" class="knob pitch">
-          </div>
-          <div class="knob-row">
-            <label>Pan</label>
-            <input type="range" min="-1" max="1" step="0.01" value="0" data-type="sine" class="knob pan">
-          </div>
+          <div class="knob-row"><label>Volume</label><input type="range" min="0" max="1" step="0.01" value="0" data-type="sine" class="knob volume"></div>
+          <div class="knob-row"><label>Pitch (Hz)</label><input type="range" min="40" max="200" step="1" value="110" data-type="sine" class="knob pitch"></div>
+          <div class="knob-row"><label>Pan</label><input type="range" min="-1" max="1" step="0.01" value="0" data-type="sine" class="knob pan"></div>
         </div>
-
         <div class="knob-group">
           <h3>Square <span class="led-indicator" data-voice="square"></span></h3>
-          <div class="knob-row">
-            <label>Volume</label>
-            <input type="range" min="0" max="1" step="0.01" value="0" data-type="square" class="knob volume">
-          </div>
-          <div class="knob-row">
-            <label>Pitch (Hz)</label>
-            <input type="range" min="40" max="200" step="1" value="110" data-type="square" class="knob pitch">
-          </div>
-          <div class="knob-row">
-            <label>Pan</label>
-            <input type="range" min="-1" max="1" step="0.01" value="0" data-type="square" class="knob pan">
-          </div>
+          <div class="knob-row"><label>Volume</label><input type="range" min="0" max="1" step="0.01" value="0" data-type="square" class="knob volume"></div>
+          <div class="knob-row"><label>Pitch (Hz)</label><input type="range" min="40" max="200" step="1" value="110" data-type="square" class="knob pitch"></div>
+          <div class="knob-row"><label>Pan</label><input type="range" min="-1" max="1" step="0.01" value="0" data-type="square" class="knob pan"></div>
         </div>
-
         <div class="knob-group">
           <h3>Triangle <span class="led-indicator" data-voice="triangle"></span></h3>
-          <div class="knob-row">
-            <label>Volume</label>
-            <input type="range" min="0" max="1" step="0.01" value="0" data-type="triangle" class="knob volume">
-          </div>
-          <div class="knob-row">
-            <label>Pitch (Hz)</label>
-            <input type="range" min="40" max="200" step="1" value="110" data-type="triangle" class="knob pitch">
-          </div>
-          <div class="knob-row">
-            <label>Pan</label>
-            <input type="range" min="-1" max="1" step="0.01" value="0" data-type="triangle" class="knob pan">
-          </div>
+          <div class="knob-row"><label>Volume</label><input type="range" min="0" max="1" step="0.01" value="0" data-type="triangle" class="knob volume"></div>
+          <div class="knob-row"><label>Pitch (Hz)</label><input type="range" min="40" max="200" step="1" value="110" data-type="triangle" class="knob pitch"></div>
+          <div class="knob-row"><label>Pan</label><input type="range" min="-1" max="1" step="0.01" value="0" data-type="triangle" class="knob pan"></div>
         </div>
-
         <div class="knob-group">
           <h3>Sawtooth <span class="led-indicator" data-voice="sawtooth"></span></h3>
-          <div class="knob-row">
-            <label>Volume</label>
-            <input type="range" min="0" max="1" step="0.01" value="0" data-type="sawtooth" class="knob volume">
-          </div>
-          <div class="knob-row">
-            <label>Pitch (Hz)</label>
-            <input type="range" min="40" max="200" step="1" value="110" data-type="sawtooth" class="knob pitch">
-          </div>
-          <div class="knob-row">
-            <label>Pan</label>
-            <input type="range" min="-1" max="1" step="0.01" value="0" data-type="sawtooth" class="knob pan">
-          </div>
+          <div class="knob-row"><label>Volume</label><input type="range" min="0" max="1" step="0.01" value="0" data-type="sawtooth" class="knob volume"></div>
+          <div class="knob-row"><label>Pitch (Hz)</label><input type="range" min="40" max="200" step="1" value="110" data-type="sawtooth" class="knob pitch"></div>
+          <div class="knob-row"><label>Pan</label><input type="range" min="-1" max="1" step="0.01" value="0" data-type="sawtooth" class="knob pan"></div>
         </div>
-
         <div class="knob-group">
           <h3>Pulse <span class="led-indicator" data-voice="pulse"></span></h3>
-          <div class="knob-row">
-            <label>Volume</label>
-            <input type="range" min="0" max="1" step="0.01" value="0" data-type="pulse" class="knob volume">
-          </div>
-          <div class="knob-row">
-            <label>Pitch (Hz)</label>
-            <input type="range" min="40" max="200" step="1" value="110" data-type="pulse" class="knob pitch">
-          </div>
-          <div class="knob-row">
-            <label>Pan</label>
-            <input type="range" min="-1" max="1" step="0.01" value="0" data-type="pulse" class="knob pan">
-          </div>
-          <div class="knob-row">
-            <label>Pulse Width</label>
-            <input id="pulseWidth" type="range" min="0.05" max="0.95" step="0.005" value="0.50" class="knob">
-          </div>
+          <div class="knob-row"><label>Volume</label><input type="range" min="0" max="1" step="0.01" value="0" data-type="pulse" class="knob volume"></div>
+          <div class="knob-row"><label>Pitch (Hz)</label><input type="range" min="40" max="200" step="1" value="110" data-type="pulse" class="knob pitch"></div>
+          <div class="knob-row"><label>Pan</label><input type="range" min="-1" max="1" step="0.01" value="0" data-type="pulse" class="knob pan"></div>
+          <div class="knob-row"><label>Pulse Width</label><input id="pulseWidth" type="range" min="0.05" max="0.95" step="0.005" value="0.50" class="knob"></div>
         </div>
-
         <div class="knob-group">
-          <h3>Wave Morph</h3>
-          <div class="knob-row">
-            <label>Morph</label>
-            <input id="waveMorph" type="range" min="0" max="1" step="0.01" value="0" class="knob">
-          </div>
+          <h3>Wave Morph <span class="fix-badge">FIX#11</span></h3>
+          <div class="knob-row"><label>Morph</label><input id="waveMorph" type="range" min="0" max="1" step="0.01" value="0" class="knob"></div>
         </div>
       </div>
-
       <div class="knob-group">
         <h3>Cross Modulation</h3>
-        <div class="knob-row">
-          <label>Amount</label>
-          <input id="crossMod" type="range" min="0" max="1" step="0.01" value="0" class="knob">
-        </div>
-        <div class="knob-row">
-          <label>Rate (Hz)</label>
-          <input id="crossModRate" type="range" min="0.1" max="20" step="0.1" value="5" class="knob">
-        </div>
+        <div class="knob-row"><label>Amount</label><input id="crossMod" type="range" min="0" max="1" step="0.01" value="0" class="knob"></div>
+        <div class="knob-row"><label>Rate (Hz)</label><input id="crossModRate" type="range" min="0.1" max="20" step="0.1" value="5" class="knob"></div>
       </div>
     </div>
 
+    <!-- EFFECTS TAB -->
     <div class="tab-content" data-tab="effects">
       <div class="controls-grid">
         <div class="knob-group">
-          <h3>FDN Reverb (Algorithmic)</h3>
-          <div class="knob-row">
-            <label>Amount</label>
-            <input id="reverb" type="range" min="0" max="1" step="0.01" value="0.3" class="knob">
-          </div>
-          <div class="knob-row">
-            <label>Decay Time</label>
-            <input id="reverbDecay" type="range" min="0.1" max="20" step="0.1" value="5" class="knob">
-          </div>
+          <h3>FDN Reverb <span class="fix-badge">FIX#2</span></h3>
+          <div class="knob-row"><label>Amount</label><input id="reverb" type="range" min="0" max="1" step="0.01" value="0.3" class="knob"></div>
+          <div class="knob-row"><label>Decay Time</label><input id="reverbDecay" type="range" min="0.1" max="20" step="0.1" value="5" class="knob"></div>
         </div>
-
         <div class="knob-group">
           <h3>Tape Saturation</h3>
-          <div class="knob-row">
-            <label>Drive</label>
-            <input id="distortion" type="range" min="0" max="1" step="0.01" value="0" class="knob">
-          </div>
-          <div class="knob-row">
-            <label>Hysteresis</label>
-            <input id="distortion2" type="range" min="0" max="1" step="0.01" value="0" class="knob">
-          </div>
+          <div class="knob-row"><label>Drive</label><input id="distortion" type="range" min="0" max="1" step="0.01" value="0" class="knob"></div>
+          <div class="knob-row"><label>Hysteresis</label><input id="distortion2" type="range" min="0" max="1" step="0.01" value="0" class="knob"></div>
         </div>
-
         <div class="knob-group">
           <h3>Delay</h3>
-          <div class="knob-row">
-            <label>Time (s)</label>
-            <input id="delayTime" type="range" min="0" max="1" step="0.01" value="0" class="knob">
-          </div>
-          <div class="knob-row">
-            <label>Feedback</label>
-            <input id="delayFeedback" type="range" min="0" max="0.9" step="0.01" value="0" class="knob">
-          </div>
+          <div class="knob-row"><label>Time (s)</label><input id="delayTime" type="range" min="0" max="1" step="0.01" value="0" class="knob"></div>
+          <div class="knob-row"><label>Feedback</label><input id="delayFeedback" type="range" min="0" max="0.9" step="0.01" value="0" class="knob"></div>
         </div>
-
         <div class="knob-group">
           <h3>Tremolo</h3>
-          <div class="knob-row">
-            <label>Rate (Hz)</label>
-            <input id="tremolo" type="range" min="0" max="10" step="0.1" value="0" class="knob">
-          </div>
+          <div class="knob-row"><label>Rate (Hz)</label><input id="tremolo" type="range" min="0" max="10" step="0.1" value="0" class="knob"></div>
         </div>
-
         <div class="knob-group">
           <h3>Master Filter (Moog-ish)</h3>
-          <div class="knob-row">
-            <label>Cutoff (Hz)</label>
-            <input id="filterFreq" type="range" min="100" max="10000" step="100" value="5000" class="knob">
-          </div>
-           <div class="knob-row">
-            <label>Resonance</label>
-            <input id="filterRes" type="range" min="0" max="20" step="0.1" value="0" class="knob">
-          </div>
+          <div class="knob-row"><label>Cutoff (Hz)</label><input id="filterFreq" type="range" min="100" max="10000" step="100" value="5000" class="knob"></div>
+          <div class="knob-row"><label>Resonance</label><input id="filterRes" type="range" min="0" max="20" step="0.1" value="0" class="knob"></div>
         </div>
       </div>
     </div>
 
+    <!-- MODULATION TAB -->
     <div class="tab-content" data-tab="modulation">
       <div class="controls-grid">
         <div class="knob-group">
-          <h3>Global LFO</h3>
-          <div class="knob-row">
-            <label>Speed (Hz)</label>
-            <input id="lfoSpeed" type="range" min="0" max="10" step="0.01" value="5" class="knob">
-          </div>
-          <div class="knob-row">
-            <label>Depth (cents)</label>
-            <input id="lfoDepth" type="range" min="0" max="50" step="0.1" value="10" class="knob">
-          </div>
+          <h3>Global LFO <span class="fix-badge">FIX#20</span></h3>
+          <div class="knob-row"><label>Speed (Hz)</label><input id="lfoSpeed" type="range" min="0" max="10" step="0.01" value="5" class="knob"></div>
+          <div class="knob-row"><label>Depth (cents)</label><input id="lfoDepth" type="range" min="0" max="50" step="0.1" value="0" class="knob"></div>
         </div>
-
         <div class="knob-group">
           <h3>Ring Modulator</h3>
-          <div class="knob-row">
-            <label>Frequency (Hz)</label>
-            <input id="ringModFreq" type="range" min="0" max="1000" step="1" value="0" class="knob">
-          </div>
-          <div class="knob-row">
-            <label>Depth</label>
-            <input id="ringModDepth" type="range" min="0" max="1" step="0.01" value="0" class="knob">
-          </div>
+          <div class="knob-row"><label>Freq (Hz)</label><input id="ringModFreq" type="range" min="0" max="1000" step="1" value="0" class="knob"></div>
+          <div class="knob-row"><label>Depth</label><input id="ringModDepth" type="range" min="0" max="1" step="0.01" value="0" class="knob"></div>
         </div>
-
         <div class="knob-group">
           <h3>Random Drift</h3>
-          <div class="knob-row">
-            <label>Amount</label>
-            <input id="randAmount" type="range" min="0" max="1" step="0.01" value="0" class="knob">
-          </div>
+          <div class="knob-row"><label>Amount</label><input id="randAmount" type="range" min="0" max="1" step="0.01" value="0" class="knob"></div>
         </div>
-
         <div class="knob-group">
           <h3>Envelope Follower</h3>
-          <div class="knob-row">
-            <label>Sensitivity</label>
-            <input id="envFollow" type="range" min="0" max="1" step="0.01" value="0" class="knob">
-          </div>
-          <div class="knob-row">
-            <label>Filter Mod</label>
-            <input id="envToFilter" type="range" min="0" max="1" step="0.01" value="0" class="knob">
-          </div>
+          <div class="knob-row"><label>Sensitivity</label><input id="envFollow" type="range" min="0" max="1" step="0.01" value="0" class="knob"></div>
+          <div class="knob-row"><label>Filter Mod</label><input id="envToFilter" type="range" min="0" max="1" step="0.01" value="0" class="knob"></div>
         </div>
-
         <div class="knob-group">
-          <h3>Probability Gate</h3>
-          <div class="knob-row">
-            <label>Chance</label>
-            <input id="probGate" type="range" min="0" max="1" step="0.01" value="1" class="knob">
-          </div>
-          <div class="knob-row">
-            <label>Rate (Hz)</label>
-            <input id="probRate" type="range" min="0.1" max="10" step="0.1" value="2" class="knob">
-          </div>
+          <h3>Probability Gate <span class="fix-badge">FIX#4</span></h3>
+          <div class="knob-row"><label>Chance</label><input id="probGate" type="range" min="0" max="1" step="0.01" value="1" class="knob"></div>
+          <div class="knob-row"><label>Rate (Hz)</label><input id="probRate" type="range" min="0.1" max="10" step="0.1" value="2" class="knob"></div>
         </div>
       </div>
-
       <div class="knob-group">
-        <h3>Step Sequencer <span class="led-indicator" id="seqLed"></span></h3>
+        <h3>Step Sequencer <span class="fix-badge">FIX#16</span> <span class="led-indicator" id="seqLed"></span></h3>
         <div class="preset-row">
           <button id="seqToggle">Start Sequencer</button>
           <button id="seqRandomize">Randomize Steps</button>
         </div>
-        <div class="knob-row">
-          <label>Step Time (s)</label>
-          <input id="seqStepTime" type="range" min="1" max="60" step="1" value="8" class="knob">
-        </div>
-        <div class="knob-row">
-          <label>Smooth (s)</label>
-          <input id="seqSmooth" type="range" min="0" max="10" step="0.1" value="2" class="knob">
-        </div>
-        <div class="knob-row">
-          <label>→ Filter</label>
-          <input id="seqAmtFilter" type="range" min="0" max="2" step="0.01" value="0.5" class="knob">
-        </div>
-        <div class="knob-row">
-          <label>→ Ring Depth</label>
-          <input id="seqAmtRing" type="range" min="0" max="1" step="0.01" value="0.5" class="knob">
-        </div>
-        <div style="margin-top: 10px;">
-          <label style="display: block; margin-bottom: 8px;">Step Values</label>
-          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;">
+        <div class="knob-row"><label>Step Time (s)</label><input id="seqStepTime" type="range" min="1" max="60" step="1" value="8" class="knob"></div>
+        <div class="knob-row"><label>Smooth (s)</label><input id="seqSmooth" type="range" min="0" max="10" step="0.1" value="2" class="knob"></div>
+        <div class="knob-row"><label>→ Filter</label><input id="seqAmtFilter" type="range" min="0" max="2" step="0.01" value="0.5" class="knob"></div>
+        <div class="knob-row"><label>→ Ring Depth</label><input id="seqAmtRing" type="range" min="0" max="1" step="0.01" value="0.5" class="knob"></div>
+        <div style="margin-top:10px;">
+          <label style="display:block;margin-bottom:8px;">Step Values</label>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;">
             <input id="seqStep0" type="range" min="-1" max="1" step="0.01" value="0.0" class="knob">
             <input id="seqStep1" type="range" min="-1" max="1" step="0.01" value="0.3" class="knob">
             <input id="seqStep2" type="range" min="-1" max="1" step="0.01" value="-0.2" class="knob">
@@ -619,306 +445,168 @@
       </div>
     </div>
 
+    <!-- MATRIX TAB -->
     <div class="tab-content" data-tab="matrix">
-        <div class="knob-group">
-            <h3>Modulation Matrix</h3>
-            <div id="matrixRows">
-                </div>
-            <button class="matrix-add" id="addMatrixRow">+ Add Modulation Route</button>
-        </div>
+      <div class="knob-group">
+        <h3>Modulation Matrix <span class="fix-badge">FIX#1</span> <span class="fix-badge">FIX#6</span></h3>
+        <div id="matrixRows"></div>
+        <button class="matrix-add" id="addMatrixRow">+ Add Modulation Route</button>
+      </div>
     </div>
 
+    <!-- LAYERS TAB -->
     <div class="tab-content" data-tab="layers">
       <div class="controls-grid">
         <div class="knob-group">
-          <h3>SuperSaw Stack</h3>
-          <div class="knob-row">
-            <label>Volume</label>
-            <input id="supersawVolume" type="range" min="0" max="1" step="0.01" value="0" class="knob">
-          </div>
+          <h3>SuperSaw Stack <span class="fix-badge">FIX#10</span></h3>
+          <div class="knob-row"><label>Volume</label><input id="supersawVolume" type="range" min="0" max="1" step="0.01" value="0" class="knob"></div>
         </div>
-
         <div class="knob-group">
           <h3>Shimmer Reverb</h3>
-          <div class="knob-row">
-            <label>Volume</label>
-            <input id="shimmerVolume" type="range" min="0" max="1" step="0.01" value="0" class="knob">
-          </div>
+          <div class="knob-row"><label>Volume</label><input id="shimmerVolume" type="range" min="0" max="1" step="0.01" value="0" class="knob"></div>
         </div>
-
         <div class="knob-group">
           <h3>Harmonizer</h3>
-          <div class="knob-row">
-            <label>Volume</label>
-            <input id="harmonizerVolume" type="range" min="0" max="1" step="0.01" value="0" class="knob">
-          </div>
-          <div class="knob-row">
-            <label>Pitch (Semi)</label>
-            <input id="harmonizerPitch" type="range" min="-12" max="12" step="1" value="0" class="knob">
-          </div>
+          <div class="knob-row"><label>Volume</label><input id="harmonizerVolume" type="range" min="0" max="1" step="0.01" value="0" class="knob"></div>
+          <div class="knob-row"><label>Pitch (Semi)</label><input id="harmonizerPitch" type="range" min="-12" max="12" step="1" value="0" class="knob"></div>
         </div>
-
         <div class="knob-group">
           <h3>Chorus</h3>
-          <div class="knob-row">
-            <label>Volume</label>
-            <input id="chorusVolume" type="range" min="0" max="1" step="0.01" value="0" class="knob">
-          </div>
+          <div class="knob-row"><label>Volume</label><input id="chorusVolume" type="range" min="0" max="1" step="0.01" value="0" class="knob"></div>
         </div>
-
         <div class="knob-group">
           <h3>Wow & Flutter</h3>
-          <div class="knob-row">
-            <label>Volume</label>
-            <input id="wowFlutterVolume" type="range" min="0" max="1" step="0.01" value="0" class="knob">
-          </div>
+          <div class="knob-row"><label>Volume</label><input id="wowFlutterVolume" type="range" min="0" max="1" step="0.01" value="0" class="knob"></div>
         </div>
-
         <div class="knob-group">
-          <h3>Granular</h3>
-          <div style="font-size: 0.65rem; color: #fa0; text-align: center; margin-bottom: 5px;">(Drag & Drop Audio to Replace)</div>
-          <div class="knob-row">
-            <label>Depth</label>
-            <input id="granularDepth" type="range" min="0" max="1" step="0.01" value="0" class="knob">
-          </div>
-          <div class="knob-row">
-            <label>Rate (Hz)</label>
-            <input id="granularRate" type="range" min="0" max="50" step="0.1" value="0" class="knob">
-          </div>
+          <h3>Granular <span class="fix-badge">FIX#5</span></h3>
+          <div style="font-size:0.65rem;color:#fa0;text-align:center;margin-bottom:5px;">(Drag & Drop Audio to Replace)</div>
+          <div class="knob-row"><label>Depth</label><input id="granularDepth" type="range" min="0" max="1" step="0.01" value="0" class="knob"></div>
+          <div class="knob-row"><label>Rate (Hz)</label><input id="granularRate" type="range" min="0" max="50" step="0.1" value="0" class="knob"></div>
         </div>
       </div>
     </div>
 
+    <!-- TEXTURE TAB -->
     <div class="tab-content" data-tab="texture">
       <div class="controls-grid">
         <div class="knob-group">
-          <h3>Radio / Noise</h3>
-          <div class="knob-row">
-            <label>Volume</label>
-            <input id="radioVolume" type="range" min="0" max="1" step="0.01" value="0" class="knob">
-          </div>
-          <div class="knob-row">
-            <label>Tuning (kHz)</label>
-            <input id="radioTuning" type="range" min="0" max="100" step="1" value="50" class="knob">
-          </div>
-          <div class="knob-row">
-            <label>Noise Color</label>
-            <input id="noiseColor" type="range" min="0" max="1" step="0.01" value="0" class="knob">
-          </div>
+          <h3>Radio / Noise <span class="fix-badge">FIX#8</span></h3>
+          <div class="knob-row"><label>Volume</label><input id="radioVolume" type="range" min="0" max="1" step="0.01" value="0" class="knob"></div>
+          <div class="knob-row"><label>Tuning (kHz)</label><input id="radioTuning" type="range" min="0" max="100" step="1" value="50" class="knob"></div>
+          <div class="knob-row"><label>Noise Color</label><input id="noiseColor" type="range" min="0" max="1" step="0.01" value="0" class="knob"></div>
         </div>
-
         <div class="knob-group">
           <h3>Haze (Downsampler)</h3>
-          <div class="knob-row">
-            <label>Mix</label>
-            <input id="hazeMix" type="range" min="0" max="0.5" step="0.01" value="0" class="knob">
-          </div>
-          <div class="knob-row">
-            <label>Rate (kHz)</label>
-            <input id="hazeRate" type="range" min="2" max="24" step="0.5" value="12" class="knob">
-          </div>
+          <div class="knob-row"><label>Mix</label><input id="hazeMix" type="range" min="0" max="0.5" step="0.01" value="0" class="knob"></div>
+          <div class="knob-row"><label>Rate (kHz)</label><input id="hazeRate" type="range" min="2" max="24" step="0.5" value="12" class="knob"></div>
         </div>
-
         <div class="knob-group">
           <h3>Sub Harmonics</h3>
-          <div class="knob-row">
-            <label>Mix</label>
-            <input id="subMix" type="range" min="0" max="0.6" step="0.01" value="0" class="knob">
-          </div>
-          <div class="knob-row">
-            <label>LP Cutoff (Hz)</label>
-            <input id="subLPCutoff" type="range" min="60" max="800" step="5" value="220" class="knob">
-          </div>
+          <div class="knob-row"><label>Mix</label><input id="subMix" type="range" min="0" max="0.6" step="0.01" value="0" class="knob"></div>
+          <div class="knob-row"><label>LP Cutoff (Hz)</label><input id="subLPCutoff" type="range" min="60" max="800" step="5" value="220" class="knob"></div>
         </div>
       </div>
     </div>
 
+    <!-- MASTER TAB -->
     <div class="tab-content" data-tab="master">
       <div class="controls-grid">
         <div class="knob-group">
-          <h3>Stereo & Binaural</h3>
-          <div class="knob-row">
-            <label>Width</label>
-            <input id="stereoWidth" type="range" min="0" max="2" step="0.01" value="1" class="knob">
-          </div>
-          <div class="knob-row">
-            <label>Binaural Hz</label>
-            <input id="binauralBeat" type="range" min="0" max="15" step="0.1" value="0" class="knob">
-          </div>
+          <h3>Stereo & Binaural <span class="fix-badge">FIX#3</span></h3>
+          <div class="knob-row"><label>Width</label><input id="stereoWidth" type="range" min="0" max="2" step="0.01" value="1" class="knob"></div>
+          <div class="knob-row"><label>Binaural Hz</label><input id="binauralBeat" type="range" min="0" max="15" step="0.1" value="0" class="knob"></div>
         </div>
-
         <div class="knob-group">
-          <h3>Auto-Evolve</h3>
+          <h3>Auto-Evolve <span class="fix-badge">FIX#19</span></h3>
           <div class="knob-row">
             <label>Enable</label>
-            <input id="autoEvolve" type="checkbox" style="width: auto;">
+            <input id="autoEvolve" type="checkbox" style="width:auto;">
             <span class="led-indicator" id="evolveLed"></span>
           </div>
-          <div class="knob-row">
-            <label>Rate (s)</label>
-            <input id="evolveRate" type="range" min="10" max="120" step="1" value="30" class="knob">
-          </div>
+          <div class="knob-row"><label>Rate (s)</label><input id="evolveRate" type="range" min="10" max="120" step="1" value="30" class="knob"></div>
         </div>
-
         <div class="knob-group">
           <button id="evolveBtn">Evolve Now</button>
         </div>
       </div>
 
-      <h3 style="color: var(--accent); text-align: center; margin: 30px 0 15px; font-size: 1.1rem;">Tectonic Drift System</h3>
+      <h3 style="color:var(--accent);text-align:center;margin:30px 0 15px;font-size:1.1rem;">
+        Tectonic Drift System <span class="fix-badge">FIX#14</span>
+      </h3>
       <div class="controls-grid">
         <div class="knob-group">
           <h3>Harmonic Plate <span class="led-indicator" id="harmonicLed"></span></h3>
-          <div class="knob-row">
-            <label>Enable</label>
-            <input id="harmonicDriftEnable" type="checkbox" style="width: auto;">
-          </div>
-          <div class="knob-row">
-            <label>Cycle (min)</label>
-            <input id="harmonicCycle" type="range" min="5" max="60" step="1" value="20" class="knob">
-          </div>
-          <div class="knob-row">
-            <label>Depth (semi)</label>
-            <input id="harmonicDepth" type="range" min="0" max="12" step="0.5" value="3" class="knob">
-          </div>
+          <div class="knob-row"><label>Enable</label><input id="harmonicDriftEnable" type="checkbox" style="width:auto;"></div>
+          <div class="knob-row"><label>Cycle (min)</label><input id="harmonicCycle" type="range" min="5" max="60" step="1" value="20" class="knob"></div>
+          <div class="knob-row"><label>Depth (semi)</label><input id="harmonicDepth" type="range" min="0" max="12" step="0.5" value="3" class="knob"></div>
         </div>
-
         <div class="knob-group">
           <h3>Timbral Plate <span class="led-indicator" id="timbralLed"></span></h3>
-          <div class="knob-row">
-            <label>Enable</label>
-            <input id="timbralDriftEnable" type="checkbox" style="width: auto;">
-          </div>
-          <div class="knob-row">
-            <label>Cycle (min)</label>
-            <input id="timbralCycle" type="range" min="5" max="60" step="1" value="15" class="knob">
-          </div>
-          <div class="knob-row">
-            <label>Morph Speed</label>
-            <input id="timbralSpeed" type="range" min="0" max="1" step="0.01" value="0.5" class="knob">
-          </div>
+          <div class="knob-row"><label>Enable</label><input id="timbralDriftEnable" type="checkbox" style="width:auto;"></div>
+          <div class="knob-row"><label>Cycle (min)</label><input id="timbralCycle" type="range" min="5" max="60" step="1" value="15" class="knob"></div>
+          <div class="knob-row"><label>Morph Speed</label><input id="timbralSpeed" type="range" min="0" max="1" step="0.01" value="0.5" class="knob"></div>
         </div>
-
         <div class="knob-group">
           <h3>Spatial Plate <span class="led-indicator" id="spatialLed"></span></h3>
-          <div class="knob-row">
-            <label>Enable</label>
-            <input id="spatialDriftEnable" type="checkbox" style="width: auto;">
-          </div>
-          <div class="knob-row">
-            <label>Cycle (min)</label>
-            <input id="spatialCycle" type="range" min="5" max="60" step="1" value="25" class="knob">
-          </div>
-          <div class="knob-row">
-            <label>Width Range</label>
-            <input id="spatialRange" type="range" min="0" max="2" step="0.1" value="1" class="knob">
-          </div>
+          <div class="knob-row"><label>Enable</label><input id="spatialDriftEnable" type="checkbox" style="width:auto;"></div>
+          <div class="knob-row"><label>Cycle (min)</label><input id="spatialCycle" type="range" min="5" max="60" step="1" value="25" class="knob"></div>
+          <div class="knob-row"><label>Width Range</label><input id="spatialRange" type="range" min="0" max="2" step="0.1" value="1" class="knob"></div>
         </div>
       </div>
-
       <div class="tectonic-timeline">
         <div class="timeline-label">Harmonic</div>
-        <div class="timeline-bar">
-          <div class="timeline-progress" id="harmonicProgress"></div>
-          <div class="timeline-marker" id="harmonicMarker"></div>
-        </div>
+        <div class="timeline-bar"><div class="timeline-progress" id="harmonicProgress"></div><div class="timeline-marker" id="harmonicMarker"></div></div>
         <div class="timeline-label">Timbral</div>
-        <div class="timeline-bar">
-          <div class="timeline-progress" id="timbralProgress"></div>
-          <div class="timeline-marker" id="timbralMarker"></div>
-        </div>
+        <div class="timeline-bar"><div class="timeline-progress" id="timbralProgress"></div><div class="timeline-marker" id="timbralMarker"></div></div>
         <div class="timeline-label">Spatial</div>
-        <div class="timeline-bar">
-          <div class="timeline-progress" id="spatialProgress"></div>
-          <div class="timeline-marker" id="spatialMarker"></div>
-        </div>
+        <div class="timeline-bar"><div class="timeline-progress" id="spatialProgress"></div><div class="timeline-marker" id="spatialMarker"></div></div>
       </div>
 
-      <h3 style="color: var(--accent); text-align: center; margin: 30px 0 15px; font-size: 1.1rem;">Memory System</h3>
+      <h3 style="color:var(--accent);text-align:center;margin:30px 0 15px;font-size:1.1rem;">
+        Memory System <span class="fix-badge">FIX#15</span>
+      </h3>
       <div class="controls-grid">
         <div class="knob-group">
           <h3>State Memory <span class="led-indicator" id="memoryLed"></span></h3>
-          <div class="knob-row">
-            <label>Enable</label>
-            <input id="memoryEnable" type="checkbox" style="width: auto;">
-          </div>
-          <div class="knob-row">
-            <label>Interval (min)</label>
-            <input id="memoryInterval" type="range" min="1" max="20" step="1" value="5" class="knob">
-          </div>
-          <div class="knob-row">
-            <label>Recall Depth</label>
-            <input id="memoryDepth" type="range" min="1" max="10" step="1" value="5" class="knob">
-          </div>
+          <div class="knob-row"><label>Enable</label><input id="memoryEnable" type="checkbox" style="width:auto;"></div>
+          <div class="knob-row"><label>Interval (min)</label><input id="memoryInterval" type="range" min="1" max="20" step="1" value="5" class="knob"></div>
+          <div class="knob-row"><label>Recall Depth</label><input id="memoryDepth" type="range" min="1" max="10" step="1" value="5" class="knob"></div>
         </div>
-
         <div class="knob-group">
           <h3>Recall Behavior</h3>
-          <div class="knob-row">
-            <label>Morph Time (min)</label>
-            <input id="memoryMorphTime" type="range" min="1" max="10" step="0.5" value="3" class="knob">
-          </div>
-          <div class="knob-row">
-            <label>Probability</label>
-            <input id="memoryProbability" type="range" min="0" max="1" step="0.1" value="0.5" class="knob">
-          </div>
+          <div class="knob-row"><label>Morph Time (min)</label><input id="memoryMorphTime" type="range" min="1" max="10" step="0.5" value="3" class="knob"></div>
+          <div class="knob-row"><label>Probability</label><input id="memoryProbability" type="range" min="0" max="1" step="0.1" value="0.5" class="knob"></div>
         </div>
-
         <div class="knob-group">
           <h3>Manual Controls</h3>
-          <button id="memorySnapshot" style="width: 100%; margin: 5px 0;">Take Snapshot</button>
-          <button id="memoryRecall" style="width: 100%; margin: 5px 0;">Recall Random</button>
-          <button id="memoryClear" style="width: 100%; margin: 5px 0;">Clear Memory</button>
-          <div style="margin-top: 10px; text-align: center; color: var(--ink); font-size: 0.75rem;">
+          <button id="memorySnapshot" style="width:100%;margin:5px 0;">Take Snapshot</button>
+          <button id="memoryRecall" style="width:100%;margin:5px 0;">Recall Random</button>
+          <button id="memoryClear" style="width:100%;margin:5px 0;">Clear Memory</button>
+          <div style="margin-top:10px;text-align:center;color:var(--ink);font-size:0.75rem;">
             Snapshots: <span id="memoryCount">0</span>
           </div>
         </div>
       </div>
 
-      <h3 style="color: var(--accent); text-align: center; margin: 20px 0 10px;">Macro Controls</h3>
+      <h3 style="color:var(--accent);text-align:center;margin:20px 0 10px;">Macro Controls</h3>
       <div class="macro-controls">
-        <div class="knob-group">
-          <h3>Macro 1</h3>
-          <div class="knob-row">
-            <label>Control</label>
-            <input id="macro1" type="range" min="0" max="1" step="0.01" value="0" class="knob">
-          </div>
-        </div>
-        <div class="knob-group">
-          <h3>Macro 2</h3>
-          <div class="knob-row">
-            <label>Control</label>
-            <input id="macro2" type="range" min="0" max="1" step="0.01" value="0" class="knob">
-          </div>
-        </div>
-        <div class="knob-group">
-          <h3>Macro 3</h3>
-          <div class="knob-row">
-            <label>Control</label>
-            <input id="macro3" type="range" min="0" max="1" step="0.01" value="0" class="knob">
-          </div>
-        </div>
-        <div class="knob-group">
-          <h3>Macro 4</h3>
-          <div class="knob-row">
-            <label>Control</label>
-            <input id="macro4" type="range" min="0" max="1" step="0.01" value="0" class="knob">
-          </div>
-        </div>
+        <div class="knob-group"><h3>Macro 1</h3><div class="knob-row"><label>Control</label><input id="macro1" type="range" min="0" max="1" step="0.01" value="0" class="knob"></div></div>
+        <div class="knob-group"><h3>Macro 2</h3><div class="knob-row"><label>Control</label><input id="macro2" type="range" min="0" max="1" step="0.01" value="0" class="knob"></div></div>
+        <div class="knob-group"><h3>Macro 3</h3><div class="knob-row"><label>Control</label><input id="macro3" type="range" min="0" max="1" step="0.01" value="0" class="knob"></div></div>
+        <div class="knob-group"><h3>Macro 4</h3><div class="knob-row"><label>Control</label><input id="macro4" type="range" min="0" max="1" step="0.01" value="0" class="knob"></div></div>
       </div>
 
-      <h3 style="color: var(--accent); text-align: center; margin: 20px 0 10px;">XY Pad</h3>
-      <div class="xy-pad" id="xyPad">
-        <div class="xy-cursor" id="xyCursor"></div>
-      </div>
-      <div style="display: flex; gap: 20px; justify-content: center; margin-top: 10px;">
-        <label style="color: var(--ink);">X: <select id="xyParamX">
+      <h3 style="color:var(--accent);text-align:center;margin:20px 0 10px;">XY Pad</h3>
+      <div class="xy-pad" id="xyPad"><div class="xy-cursor" id="xyCursor"></div></div>
+      <div style="display:flex;gap:20px;justify-content:center;margin-top:10px;">
+        <label style="color:var(--ink);">X: <select id="xyParamX">
           <option value="filterFreq">Filter Cutoff</option>
           <option value="ringModDepth">Ring Mod Depth</option>
           <option value="stereoWidth">Stereo Width</option>
           <option value="reverb">Reverb</option>
         </select></label>
-        <label style="color: var(--ink);">Y: <select id="xyParamY">
+        <label style="color:var(--ink);">Y: <select id="xyParamY">
           <option value="ringModDepth" selected>Ring Mod Depth</option>
           <option value="filterFreq">Filter Cutoff</option>
           <option value="distortion">Distortion</option>
@@ -926,1276 +614,1282 @@
         </select></label>
       </div>
     </div>
-    
+
     <div class="viz-wrapper">
-        <canvas id="visualizer" width="800" height="120"></canvas>
-        <canvas id="goniometer" width="400" height="120"></canvas>
+      <canvas id="visualizer" width="800" height="120"></canvas>
+      <canvas id="goniometer" width="400" height="120"></canvas>
     </div>
   </div>
 
-  <script>
-    // ========== AUDIO CONTEXT & SETUP ==========
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-    const audioCtx = new AudioContext();
+<script>
+// ============================================================
+// VICEROY DRONE SYNTH 3.2 — ALL 20 FIXES APPLIED
+// ============================================================
 
-    let mediaRecorder = null;
-    let recordedChunks = [];
-    let isRecording = false;
-    let isFrozen = false;
-    let frozenBuffer = null;
-    let frozenSource = null;
+const AudioCtxClass = window.AudioContext || window.webkitAudioContext;
+const audioCtx = new AudioCtxClass();
 
-    // Audio graph nodes
-    const waves = ['sine', 'square', 'triangle', 'sawtooth', 'pulse'];
-    const oscillators = {};
-    const gains = {};
-    const panners = {};
-    const pitches = {};
-    let pulseWidth = 0.5;
-    let pulseCompGain = null;
+// ── State ──────────────────────────────────────────────────
+let isRecording = false;
+let isFrozen = false;
+let frozenBuffer = null;
+let frozenSource = null;
+let binauralHz = 0;     // FIX #3: tracked at module scope
+let mediaRecorder = null;
+let recordedChunks = [];
 
-    const MIN_VOICE_GAIN = 0.02;
+const waves = ['sine','square','triangle','sawtooth','pulse'];
+const oscillators = {};
+const gains = {};
+const panners = {};
+const pitches = {};
+const panBase = {};
+const volumeLevels = {};
+let pulseWidth = 0.5;
+let pulseCompGain = null;
+const MIN_VOICE_GAIN = 0.001;
 
-    // Master nodes
-    const masterGain = audioCtx.createGain();
-    masterGain.gain.value = 0.35;
+// ── Master nodes ───────────────────────────────────────────
+const masterGain = audioCtx.createGain();
+masterGain.gain.value = 0.35;
 
-    const outputBus = audioCtx.createGain();
-    outputBus.gain.value = 0;
+// FIX #4: Dedicated probability gate gain — separate ownership
+const probGateGain = audioCtx.createGain();
+probGateGain.gain.value = 1;
 
-    // FDN Reverb Setup (New Algorithmic Reverb)
-    function createFDNReverb(ctx) {
-        const input = ctx.createGain();
-        const output = ctx.createGain();
-        const wet = ctx.createGain();
-        const dry = ctx.createGain();
-        
-        // Parallel Comb filters
-        const delays = [0.0199, 0.0219, 0.0353, 0.0389, 0.0411, 0.0523].map(t => {
-            const d = ctx.createDelay();
-            d.delayTime.value = t;
-            const g = ctx.createGain();
-            g.gain.value = 0.8; // Decay feedback
-            const f = ctx.createBiquadFilter();
-            f.type = "lowpass";
-            f.frequency.value = 3000;
-            
-            // Loop
-            d.connect(f).connect(g).connect(d);
-            input.connect(d);
-            return {node: d, gain: g, filter: f};
-        });
-        
-        // Sum combs
-        const sum = ctx.createGain();
-        delays.forEach(d => d.node.connect(sum));
-        
-        // Series Allpass for diffusion
-        const ap1 = ctx.createDelay(); ap1.delayTime.value = 0.005;
-        const ap1f = ctx.createGain(); ap1f.gain.value = 0.7; // Feedback
-        const ap2 = ctx.createDelay(); ap2.delayTime.value = 0.0017;
-        const ap2f = ctx.createGain(); ap2f.gain.value = 0.5;
-        
-        // Simplified diffusion chain
-        sum.connect(ap1);
-        ap1.connect(wet); 
-        
-        input.connect(dry).connect(output);
-        wet.connect(output);
-        
-        return { input, output, wet, dry, setDecay: (v) => delays.forEach(d => d.gain.gain.value = Math.min(0.99, 0.7 + (v * 0.015))) };
+const outputBus = audioCtx.createGain();
+outputBus.gain.value = 0;
+
+// ── FIX #2: Real FDN Reverb with 4×4 Hadamard cross-coupling ──
+function createFDNReverb(ctx) {
+  const input  = ctx.createGain();
+  const output = ctx.createGain();
+  const wet    = ctx.createGain();
+  wet.gain.value = 0.3;
+
+  const N = 4;
+  const delayTimes = [0.02971, 0.03711, 0.04153, 0.05237];
+
+  const lines = delayTimes.map(t => {
+    const delay = ctx.createDelay(1.0);
+    delay.delayTime.value = t;
+    const lpf = ctx.createBiquadFilter();
+    lpf.type = 'lowpass';
+    lpf.frequency.value = 4500;
+    delay.connect(lpf);
+    return { delay, lpf };
+  });
+
+  // Normalised 4×4 Hadamard matrix (each entry ±0.5)
+  const H = [
+    [ 0.5,  0.5,  0.5,  0.5],
+    [ 0.5, -0.5,  0.5, -0.5],
+    [ 0.5,  0.5, -0.5, -0.5],
+    [ 0.5, -0.5, -0.5,  0.5]
+  ];
+
+  let decayVal = 0.85;
+  const feedMatrix = [];
+
+  for (let i = 0; i < N; i++) {
+    feedMatrix[i] = [];
+    for (let j = 0; j < N; j++) {
+      const g = ctx.createGain();
+      g.gain.value = H[i][j] * decayVal;
+      lines[j].lpf.connect(g);   // from line j
+      g.connect(lines[i].delay); // to   line i
+      feedMatrix[i][j] = g;
     }
-    const fdnReverb = createFDNReverb(audioCtx);
+  }
 
-    // Saturation (Hysteresis-like curve)
-    const distortion = audioCtx.createWaveShaper();
-    const distortion2 = audioCtx.createWaveShaper();
-    
-    function makeSaturationCurve(amount) {
-        const k = amount * 10;
-        const n = 44100;
-        const curve = new Float32Array(n);
-        const deg = Math.PI / 180;
-        for (let i = 0; i < n; ++i) {
-            let x = i * 2 / n - 1;
-            curve[i] = (3 + k) * x * 20 * deg / (Math.PI + k * Math.abs(x));
-        }
-        return curve;
+  lines.forEach(l => {
+    input.connect(l.delay);
+    l.lpf.connect(wet);
+  });
+  input.connect(output);
+  wet.connect(output);
+
+  return {
+    input, output, wet,
+    setDecay(v) {
+      decayVal = Math.min(0.99, 0.6 + v * 0.02);
+      for (let i = 0; i < N; i++)
+        for (let j = 0; j < N; j++)
+          feedMatrix[i][j].gain.setTargetAtTime(
+            H[i][j] * decayVal, audioCtx.currentTime, 0.05
+          );
     }
-    distortion.curve = makeSaturationCurve(0);
-    distortion2.curve = makeSaturationCurve(0);
+  };
+}
+const fdnReverb = createFDNReverb(audioCtx);
 
-    const biquadFilter = audioCtx.createBiquadFilter();
-    biquadFilter.type = 'lowpass';
-    biquadFilter.frequency.value = 1000;
+// ── Saturation ─────────────────────────────────────────────
+const distortionNode  = audioCtx.createWaveShaper();
+const distortionNode2 = audioCtx.createWaveShaper();
 
-    const tiltFilter = audioCtx.createBiquadFilter();
-    tiltFilter.type = 'lowshelf';
-    tiltFilter.frequency.value = 500;
-    tiltFilter.gain.value = 0;
+function makeSaturationCurve(amount) {
+  const k = amount * 10, n = 44100, deg = Math.PI / 180;
+  const curve = new Float32Array(n);
+  for (let i = 0; i < n; i++) {
+    const x = i * 2 / n - 1;
+    curve[i] = (3 + k) * x * 20 * deg / (Math.PI + k * Math.abs(x));
+  }
+  return curve;
+}
+distortionNode.curve  = makeSaturationCurve(0);
+distortionNode2.curve = makeSaturationCurve(0);
 
-    const tremoloGain = audioCtx.createGain();
-    tremoloGain.gain.value = 1;
-    const tremoloOsc = audioCtx.createOscillator();
-    tremoloOsc.frequency.value = 0;
-    const tremoloDepth = audioCtx.createGain();
-    tremoloDepth.gain.value = 0.35;
-    const tremoloDC = audioCtx.createConstantSource();
-    tremoloDC.offset.value = 1;
-    tremoloOsc.connect(tremoloDepth).connect(tremoloGain.gain);
-    tremoloDC.connect(tremoloGain.gain);
-    tremoloOsc.start();
-    tremoloDC.start();
+// ── Biquad / Tremolo ───────────────────────────────────────
+const biquadFilter = audioCtx.createBiquadFilter();
+biquadFilter.type = 'lowpass';
+biquadFilter.frequency.value = 1000;
 
-    const delayNode = audioCtx.createDelay();
-    delayNode.delayTime.value = 0;
-    const delayFeedbackGain = audioCtx.createGain();
-    delayFeedbackGain.gain.value = 0;
-    delayNode.connect(delayFeedbackGain);
-    delayFeedbackGain.connect(delayNode);
+const tiltFilter = audioCtx.createBiquadFilter();
+tiltFilter.type = 'lowshelf';
+tiltFilter.frequency.value = 500;
+tiltFilter.gain.value = 0;
 
-    const ringModGain = audioCtx.createGain();
-    ringModGain.gain.value = 0;
-    const ringModOsc = audioCtx.createOscillator();
-    ringModOsc.type = 'sine';
-    ringModOsc.frequency.value = 30;
-    ringModOsc.connect(ringModGain.gain);
-    ringModOsc.start();
+const tremoloGain  = audioCtx.createGain(); tremoloGain.gain.value = 1;
+const tremoloOsc   = audioCtx.createOscillator(); tremoloOsc.frequency.value = 0;
+const tremoloDepth = audioCtx.createGain(); tremoloDepth.gain.value = 0.35;
+const tremoloDC    = audioCtx.createConstantSource(); tremoloDC.offset.value = 1;
+tremoloOsc.connect(tremoloDepth).connect(tremoloGain.gain);
+tremoloDC.connect(tremoloGain.gain);
+tremoloOsc.start(); tremoloDC.start();
 
-    const masterFilter = audioCtx.createBiquadFilter();
-    masterFilter.type = 'lowpass';
-    masterFilter.frequency.value = 5000;
+// ── Delay ──────────────────────────────────────────────────
+const delayNode = audioCtx.createDelay();
+delayNode.delayTime.value = 0;
+const delayFeedbackGain = audioCtx.createGain();
+delayFeedbackGain.gain.value = 0;
+delayNode.connect(delayFeedbackGain);
+delayFeedbackGain.connect(delayNode);
 
-    // LFO
-    const lfo = audioCtx.createOscillator();
-    const lfoGain = audioCtx.createGain();
-    lfo.frequency.value = 5;
-    lfoGain.gain.value = 0;
-    lfo.connect(lfoGain);
-    lfo.start();
+// ── Ring Modulator ─────────────────────────────────────────
+const ringModGain = audioCtx.createGain(); ringModGain.gain.value = 0;
+const ringModOsc  = audioCtx.createOscillator();
+ringModOsc.type = 'sine'; ringModOsc.frequency.value = 30;
+ringModOsc.connect(ringModGain.gain);
+ringModOsc.start();
 
-    // Layers
-    const harmonizerGain = audioCtx.createGain();
-    harmonizerGain.gain.value = 0;
-    const harmonizerDelay = audioCtx.createDelay();
-    harmonizerDelay.delayTime.value = 0.01;
-    const harmonizerPitchLFO = audioCtx.createOscillator();
-    const harmonizerPitchGain = audioCtx.createGain();
-    harmonizerPitchLFO.frequency.value = 5;
-    harmonizerPitchGain.gain.value = 0.005;
-    harmonizerPitchLFO.connect(harmonizerPitchGain);
-    harmonizerPitchGain.connect(harmonizerDelay.delayTime);
-    harmonizerPitchLFO.start();
+// ── Master Filter ──────────────────────────────────────────
+const masterFilter = audioCtx.createBiquadFilter();
+masterFilter.type = 'lowpass';
+masterFilter.frequency.value = 5000;
 
-    const chorusGain = audioCtx.createGain();
-    chorusGain.gain.value = 0;
-    const chorusDelay = audioCtx.createDelay();
-    chorusDelay.delayTime.value = 0.02;
-    const chorusLFO = audioCtx.createOscillator();
-    const chorusLFODepth = audioCtx.createGain();
-    chorusLFO.frequency.value = 0.25;
-    chorusLFODepth.gain.value = 0.01;
-    chorusLFO.connect(chorusLFODepth);
-    chorusLFODepth.connect(chorusDelay.delayTime);
-    chorusLFO.start();
+// ── LFO ────────────────────────────────────────────────────
+const lfo     = audioCtx.createOscillator();
+const lfoGain = audioCtx.createGain();
+lfo.frequency.value = 5;
+lfoGain.gain.value = 0;   // FIX #20: no /1000 — direct cents
+lfo.connect(lfoGain);
+lfo.start();
 
-    const wowFlutterGain = audioCtx.createGain();
-    wowFlutterGain.gain.value = 0;
-    const wowFlutterDelay = audioCtx.createDelay();
-    wowFlutterDelay.delayTime.value = 0.005;
-    const wowFlutterLFO = audioCtx.createOscillator();
-    const wowFlutterDepth = audioCtx.createGain();
-    wowFlutterLFO.frequency.value = 0.5;
-    wowFlutterDepth.gain.value = 0.003;
-    wowFlutterLFO.connect(wowFlutterDepth);
-    wowFlutterDepth.connect(wowFlutterDelay.delayTime);
-    wowFlutterLFO.start();
+// ── Layers ─────────────────────────────────────────────────
+const harmonizerGain  = audioCtx.createGain();  harmonizerGain.gain.value = 0;
+const harmonizerDelay = audioCtx.createDelay();  harmonizerDelay.delayTime.value = 0.01;
+const harmonizerPitchLFO   = audioCtx.createOscillator();
+const harmonizerPitchGain  = audioCtx.createGain();
+harmonizerPitchLFO.frequency.value = 5; harmonizerPitchGain.gain.value = 0.005;
+harmonizerPitchLFO.connect(harmonizerPitchGain).connect(harmonizerDelay.delayTime);
+harmonizerPitchLFO.start();
 
-    const supersawGain = audioCtx.createGain();
-    supersawGain.gain.value = 0;
+const chorusGain = audioCtx.createGain(); chorusGain.gain.value = 0;
+const chorusDelay = audioCtx.createDelay(); chorusDelay.delayTime.value = 0.02;
+const chorusLFO = audioCtx.createOscillator();
+const chorusLFODepth = audioCtx.createGain();
+chorusLFO.frequency.value = 0.25; chorusLFODepth.gain.value = 0.01;
+chorusLFO.connect(chorusLFODepth).connect(chorusDelay.delayTime);
+chorusLFO.start();
 
-    const shimmerGain = audioCtx.createGain();
-    shimmerGain.gain.value = 0;
-    const shimmerDelay = audioCtx.createDelay();
-    shimmerDelay.delayTime.value = 0.2;
-    const shimmerPitchLFO = audioCtx.createOscillator();
-    const shimmerPitchGain = audioCtx.createGain();
-    shimmerPitchLFO.frequency.value = 0.1;
-    shimmerPitchGain.gain.value = 0.005;
-    shimmerPitchLFO.connect(shimmerPitchGain);
-    shimmerPitchGain.connect(shimmerDelay.delayTime);
-    shimmerPitchLFO.start();
-    const shimmerFeedback = audioCtx.createGain();
-    shimmerFeedback.gain.value = 0.4;
-    shimmerDelay.connect(shimmerFeedback);
-    shimmerFeedback.connect(shimmerDelay);
-    const shimmerMix = audioCtx.createGain();
-    shimmerDelay.connect(shimmerMix);
-    shimmerMix.connect(shimmerGain);
+const wowFlutterGain  = audioCtx.createGain(); wowFlutterGain.gain.value = 0;
+const wowFlutterDelay = audioCtx.createDelay(); wowFlutterDelay.delayTime.value = 0.005;
+const wowFlutterLFO   = audioCtx.createOscillator();
+const wowFlutterDepth = audioCtx.createGain();
+wowFlutterLFO.frequency.value = 0.5; wowFlutterDepth.gain.value = 0.003;
+wowFlutterLFO.connect(wowFlutterDepth).connect(wowFlutterDelay.delayTime);
+wowFlutterLFO.start();
 
-    const granularGain = audioCtx.createGain();
-    granularGain.gain.value = 0;
-    let granularInterval;
-    let granularSource = null;
+const supersawGain = audioCtx.createGain(); supersawGain.gain.value = 0;
 
-    // Radio/Noise
-    const sdrGain = audioCtx.createGain();
-    sdrGain.gain.value = 0;
-    const sdrFilter = audioCtx.createBiquadFilter();
-    sdrFilter.type = 'bandpass';
-    sdrFilter.frequency.value = 7000;
-    sdrFilter.Q.value = 5;
-    const sdrDetuneLFO = audioCtx.createOscillator();
-    const sdrDetuneGain = audioCtx.createGain();
-    sdrDetuneLFO.frequency.value = 0.2;
-    sdrDetuneGain.gain.value = 100;
-    sdrDetuneLFO.connect(sdrDetuneGain);
-    sdrDetuneGain.connect(sdrFilter.detune);
-    sdrDetuneLFO.start();
+const shimmerGain     = audioCtx.createGain(); shimmerGain.gain.value = 0;
+const shimmerDelay    = audioCtx.createDelay(); shimmerDelay.delayTime.value = 0.2;
+const shimmerPitchLFO = audioCtx.createOscillator();
+const shimmerPitchGain = audioCtx.createGain();
+shimmerPitchLFO.frequency.value = 0.1; shimmerPitchGain.gain.value = 0.005;
+shimmerPitchLFO.connect(shimmerPitchGain).connect(shimmerDelay.delayTime);
+shimmerPitchLFO.start();
+const shimmerFeedback = audioCtx.createGain(); shimmerFeedback.gain.value = 0.4;
+shimmerDelay.connect(shimmerFeedback).connect(shimmerDelay);
+const shimmerMix = audioCtx.createGain();
+shimmerDelay.connect(shimmerMix).connect(shimmerGain);
 
-    // RESTORED: Full Noise Engine (White, Pink, Brown) for Noise Color
-    function createPinkishNoise(length) {
-      const buf = audioCtx.createBuffer(1, length, audioCtx.sampleRate);
-      const d = buf.getChannelData(0);
-      let y = 0; const a = 0.02;
-      for (let i = 0; i < length; i++) {
-        const x = Math.random() * 2 - 1;
-        y += a * (x - y);
-        d[i] = y;
-      }
-      return buf;
+const granularGain = audioCtx.createGain(); granularGain.gain.value = 0;
+let granularInterval = null;
+let currentGranularBuffer = null; // set after noise buffers built
+
+// ── Noise engine ───────────────────────────────────────────
+const sdrGain   = audioCtx.createGain(); sdrGain.gain.value = 0;
+const sdrFilter = audioCtx.createBiquadFilter();
+sdrFilter.type = 'bandpass'; sdrFilter.frequency.value = 7000; sdrFilter.Q.value = 5;
+const sdrDetuneLFO  = audioCtx.createOscillator();
+const sdrDetuneGain = audioCtx.createGain();
+sdrDetuneLFO.frequency.value = 0.2; sdrDetuneGain.gain.value = 100;
+sdrDetuneLFO.connect(sdrDetuneGain).connect(sdrFilter.detune);
+sdrDetuneLFO.start();
+
+// FIX #8: Gate node — all noise processing is gated at zero when radio is off
+const noiseGate = audioCtx.createGain(); noiseGate.gain.value = 0;
+
+function createPinkishNoise(len) {
+  const buf = audioCtx.createBuffer(1, len, audioCtx.sampleRate);
+  const d = buf.getChannelData(0); let y = 0;
+  for (let i = 0; i < len; i++) { const x=Math.random()*2-1; y+=0.02*(x-y); d[i]=y; }
+  return buf;
+}
+function createBrownNoise(len) {
+  const buf = audioCtx.createBuffer(1, len, audioCtx.sampleRate);
+  const d = buf.getChannelData(0); let y = 0;
+  for (let i = 0; i < len; i++) {
+    y += 0.02*(Math.random()*2-1);
+    y = Math.max(-1, Math.min(1, y)); d[i]=y;
+  }
+  return buf;
+}
+const noiseLen = audioCtx.sampleRate * 5;
+const whiteBuf = audioCtx.createBuffer(1, noiseLen, audioCtx.sampleRate);
+const wd = whiteBuf.getChannelData(0);
+for (let i=0;i<noiseLen;i++) wd[i]=Math.random()*2-1;
+const pinkBuf  = createPinkishNoise(noiseLen);
+const brownBuf = createBrownNoise(noiseLen);
+currentGranularBuffer = whiteBuf; // default granular source
+
+const whiteSrc = audioCtx.createBufferSource(); whiteSrc.buffer=whiteBuf; whiteSrc.loop=true;
+const pinkSrc  = audioCtx.createBufferSource(); pinkSrc.buffer=pinkBuf;   pinkSrc.loop=true;
+const brownSrc = audioCtx.createBufferSource(); brownSrc.buffer=brownBuf;  brownSrc.loop=true;
+const whiteMix = audioCtx.createGain(); whiteMix.gain.value = 1;
+const pinkMix  = audioCtx.createGain(); pinkMix.gain.value  = 0;
+const brownMix = audioCtx.createGain(); brownMix.gain.value = 0;
+whiteSrc.connect(whiteMix).connect(noiseGate);
+pinkSrc.connect(pinkMix).connect(noiseGate);
+brownSrc.connect(brownMix).connect(noiseGate);
+noiseGate.connect(sdrFilter);
+whiteSrc.start(); pinkSrc.start(); brownSrc.start();
+
+// ── Haze & Sub ─────────────────────────────────────────────
+let hazeNode = null;
+const hazeMixGain = audioCtx.createGain(); hazeMixGain.gain.value = 0;
+let subNode = null;
+const subLP      = audioCtx.createBiquadFilter();
+subLP.type = 'lowpass'; subLP.frequency.value = 220;
+const subMixGain = audioCtx.createGain(); subMixGain.gain.value = 0;
+
+// ── Stereo width (M/S matrix) ──────────────────────────────
+const split  = audioCtx.createChannelSplitter(2);
+const merge  = audioCtx.createChannelMerger(2);
+const gLtoM = audioCtx.createGain(); gLtoM.gain.value =  0.7071;
+const gRtoM = audioCtx.createGain(); gRtoM.gain.value =  0.7071;
+const mSum  = audioCtx.createGain(); mSum.gain.value  =  1.0;
+const gLtoS = audioCtx.createGain(); gLtoS.gain.value =  0.7071;
+const gRtoS = audioCtx.createGain(); gRtoS.gain.value = -0.7071;
+const sSum  = audioCtx.createGain(); sSum.gain.value  =  1.0;
+const sScale = audioCtx.createGain(); sScale.gain.value = 1.0;
+const mToL  = audioCtx.createGain(); mToL.gain.value  =  0.7071;
+const sToL  = audioCtx.createGain(); sToL.gain.value  =  0.7071;
+const mToR  = audioCtx.createGain(); mToR.gain.value  =  0.7071;
+const sToR  = audioCtx.createGain(); sToR.gain.value  = -0.7071;
+
+const breathBus = audioCtx.createGain(); breathBus.gain.value = 1;
+
+const finalLimiter = audioCtx.createDynamicsCompressor();
+finalLimiter.threshold.value = -1; finalLimiter.knee.value = 10;
+finalLimiter.ratio.value = 12; finalLimiter.attack.value = 0.003;
+finalLimiter.release.value = 0.25;
+
+// ── Analysers ──────────────────────────────────────────────
+const analyser    = audioCtx.createAnalyser(); analyser.fftSize = 2048;
+const bufferLength = analyser.frequencyBinCount;
+const dataArray    = new Uint8Array(bufferLength);
+const gonSplitter  = audioCtx.createChannelSplitter(2);
+const analL = audioCtx.createAnalyser(); analL.fftSize = 1024;
+const analR = audioCtx.createAnalyser(); analR.fftSize = 1024;
+gonSplitter.connect(analL, 0);
+gonSplitter.connect(analR, 1);
+
+// ── Helpers ────────────────────────────────────────────────
+function makePulseWave(duty = 0.5, harmonics = 64) {
+  duty = Math.min(0.95, Math.max(0.05, duty));
+  const real = new Float32Array(harmonics + 1);
+  const imag = new Float32Array(harmonics + 1);
+  for (let n = 1; n <= harmonics; n++)
+    imag[n] = (2 / (n * Math.PI)) * (1 - Math.cos(2 * Math.PI * n * duty));
+  return audioCtx.createPeriodicWave(real, imag, { disableNormalization: false });
+}
+function getPWMCompensation(pw) {
+  pw = Math.min(0.95, Math.max(0.05, pw));
+  return Math.min(2.0, 1 / Math.sqrt(pw * (1 - pw)));
+}
+
+// FIX #3: Central binaural helper – always reads pitches + binauralHz
+function applyBinaural() {
+  Object.keys(oscillators).forEach(type => {
+    oscillators[type].r.frequency.setTargetAtTime(
+      pitches[type] + binauralHz, audioCtx.currentTime, 0.1
+    );
+  });
+}
+
+// ── Oscillators ────────────────────────────────────────────
+waves.forEach(type => {
+  const oscL   = audioCtx.createOscillator();
+  const oscR   = audioCtx.createOscillator();
+  const gain   = audioCtx.createGain();
+  const panner = audioCtx.createStereoPanner();
+  const merger = audioCtx.createChannelMerger(2);
+
+  if (type === 'pulse') {
+    const wave = makePulseWave(pulseWidth);
+    oscL.setPeriodicWave(wave); oscR.setPeriodicWave(wave);
+  } else {
+    oscL.type = type; oscR.type = type;
+  }
+  oscL.frequency.value = 110; oscR.frequency.value = 110;
+  gain.gain.value = MIN_VOICE_GAIN;
+  volumeLevels[type] = 0;
+
+  lfoGain.connect(oscL.detune);
+  lfoGain.connect(oscR.detune);
+  oscL.connect(merger, 0, 0);
+  oscR.connect(merger, 0, 1);
+
+  if (type === 'pulse') {
+    pulseCompGain = audioCtx.createGain();
+    pulseCompGain.gain.value = getPWMCompensation(pulseWidth);
+    merger.connect(gain).connect(pulseCompGain).connect(panner).connect(masterGain);
+  } else {
+    merger.connect(gain).connect(panner).connect(masterGain);
+  }
+  oscL.start(); oscR.start();
+
+  oscillators[type] = { l: oscL, r: oscR };
+  gains[type]   = gain;
+  panners[type] = panner;
+  pitches[type] = 110;
+  panBase[type] = 0;
+});
+
+// FIX #10: SuperSaw stores oscs + detuneOffsets to track pitch changes
+const supersawOscs = [];
+const supersawOffsets = [-12, -7, -5, 0, 5, 7, 12];
+let   supersawBasePitch = 110;
+
+supersawOffsets.forEach(offset => {
+  const osc = audioCtx.createOscillator();
+  const g   = audioCtx.createGain();
+  const pan = audioCtx.createStereoPanner();
+  osc.type = 'sawtooth';
+  osc.frequency.value = 110 * Math.pow(2, offset / 12);
+  g.gain.value = 0.1;
+  pan.pan.value = (Math.random() * 2 - 1) * 0.7;
+  osc.connect(g).connect(pan).connect(supersawGain);
+  osc.start();
+  supersawOscs.push({ osc, offset });
+});
+
+function updateSupersawPitch(basePitch) {
+  supersawBasePitch = basePitch;
+  supersawOscs.forEach(({ osc, offset }) =>
+    osc.frequency.setTargetAtTime(
+      basePitch * Math.pow(2, offset / 12), audioCtx.currentTime, 0.1
+    )
+  );
+}
+
+// ── Audio Routing ──────────────────────────────────────────
+masterGain.connect(fdnReverb.input);
+fdnReverb.output
+  .connect(distortionNode)
+  .connect(distortionNode2)
+  .connect(biquadFilter)
+  .connect(tiltFilter)
+  .connect(tremoloGain)
+  .connect(delayNode)
+  .connect(ringModGain);
+
+masterGain.connect(harmonizerDelay);
+harmonizerDelay.connect(harmonizerGain).connect(ringModGain);
+masterGain.connect(chorusDelay);
+chorusDelay.connect(chorusGain).connect(ringModGain);
+masterGain.connect(wowFlutterDelay);
+wowFlutterDelay.connect(wowFlutterGain).connect(ringModGain);
+masterGain.connect(shimmerDelay);
+shimmerGain.connect(ringModGain);
+supersawGain.connect(ringModGain);
+granularGain.connect(ringModGain);
+sdrFilter.connect(sdrGain).connect(ringModGain);
+
+// Worklets (Haze + Sub)
+async function ensureWorklets() {
+  if (!audioCtx.audioWorklet) return;
+  const hazeCode = `class DownsampleProcessor extends AudioWorkletProcessor{constructor(){super();this.hold=Math.max(1,Math.floor(sampleRate/12000));this.phase=0;this.lL=0;this.lR=0;this.port.onmessage=(e)=>{this.hold=Math.max(1,Math.floor(sampleRate/(+e.data.rate||12000)));}}process(inputs,outputs){const i=inputs[0]||[];const o=outputs[0];const iL=i[0]||new Float32Array(o[0].length);const iR=i[1]||iL;for(let n=0;n<o[0].length;n++){if(this.phase===0){this.lL=iL[n];this.lR=iR[n];}o[0][n]=this.lL;if(o[1])o[1][n]=this.lR;this.phase=(this.phase+1)%this.hold;}return true;}}registerProcessor('downsample-processor',DownsampleProcessor);`;
+  const subCode  = `class SubDividerProcessor extends AudioWorkletProcessor{constructor(){super();this.prev=0;this.cross=0;this.sq2=-1;this.sq3=-1;}process(inputs,outputs){const i=inputs[0]||[];const o=outputs[0];const iL=i[0]||new Float32Array(o[0].length);const iR=i[1]||iL;for(let n=0;n<o[0].length;n++){const x=0.5*((iL[n]||0)+(iR[n]||0));if((this.prev<=0&&x>0)||(this.prev>=0&&x<0)){this.cross++;if((this.cross%2)===0)this.sq2=-this.sq2;if((this.cross%3)===0)this.sq3=-this.sq3;}this.prev=x;const y=(0.65*this.sq2+0.35*this.sq3)*0.7;o[0][n]=y;if(o[1])o[1][n]=y;}return true;}}registerProcessor('sub-divider-processor',SubDividerProcessor);`;
+  await audioCtx.audioWorklet.addModule(URL.createObjectURL(new Blob([hazeCode],{type:'application/javascript'})));
+  await audioCtx.audioWorklet.addModule(URL.createObjectURL(new Blob([subCode], {type:'application/javascript'})));
+}
+
+(async () => {
+  await ensureWorklets();
+  if (audioCtx.audioWorklet) {
+    hazeNode = new AudioWorkletNode(audioCtx,'downsample-processor',{numberOfInputs:1,numberOfOutputs:1,outputChannelCount:[2]});
+    masterGain.connect(hazeNode);
+    hazeNode.connect(hazeMixGain).connect(ringModGain);
+    hazeNode.port.postMessage({ rate: 12000 });
+
+    subNode = new AudioWorkletNode(audioCtx,'sub-divider-processor',{numberOfInputs:1,numberOfOutputs:1,outputChannelCount:[2]});
+    masterGain.connect(subNode);
+    subNode.connect(subLP).connect(subMixGain).connect(ringModGain);
+  }
+})();
+
+// FIX #4: probGateGain is in the chain AFTER masterFilter — not masterGain
+ringModGain.connect(masterFilter);
+masterFilter.connect(probGateGain);
+probGateGain.connect(split);
+
+split.connect(gLtoM, 0); split.connect(gRtoM, 1);
+gLtoM.connect(mSum);     gRtoM.connect(mSum);
+split.connect(gLtoS, 0); split.connect(gRtoS, 1);
+gLtoS.connect(sSum);     gRtoS.connect(sSum);
+sSum.connect(sScale);
+
+mSum.connect(mToL).connect(merge, 0, 0);
+sScale.connect(sToL).connect(merge, 0, 0);
+mSum.connect(mToR).connect(merge, 0, 1);
+sScale.connect(sToR).connect(merge, 0, 1);
+
+merge.connect(breathBus);
+breathBus.connect(finalLimiter);
+finalLimiter.connect(outputBus);
+outputBus.connect(audioCtx.destination);
+finalLimiter.connect(analyser);
+finalLimiter.connect(gonSplitter);
+
+// Breathing LFO
+const breathLFO   = audioCtx.createOscillator();
+const breathDepth = audioCtx.createGain();
+const breathDC    = audioCtx.createConstantSource();
+breathLFO.type = 'sine'; breathLFO.frequency.value = 0.05;
+breathDepth.gain.value = 0.05; breathDC.offset.value = 1.0;
+breathLFO.connect(breathDepth).connect(breathBus.gain);
+breathDC.connect(breathBus.gain);
+breathLFO.start(); breathDC.start();
+
+// ── FIX #9: Organic drift — cancels old scheduled values, no accumulation ──
+const driftIntervals = [];
+function createOrganicDrift(param, depth, intervalMs) {
+  let currentVal = 0;
+  const id = setInterval(() => {
+    const now    = audioCtx.currentTime;
+    const target = (Math.random() * 2 - 1) * depth;
+    param.cancelScheduledValues(now);
+    param.setValueAtTime(currentVal, now);
+    param.linearRampToValueAtTime(target, now + intervalMs / 1000);
+    currentVal = target;
+  }, intervalMs);
+  return id;
+}
+waves.forEach(type => {
+  driftIntervals.push(createOrganicDrift(oscillators[type].l.detune, 5, 3000));
+  driftIntervals.push(createOrganicDrift(oscillators[type].r.detune, 5, 3200));
+});
+
+// ── FIX #5: Polyphonic granular — no stop(), no clicks ────
+function playGranular() {
+  if (!currentGranularBuffer || granularGain.gain.value < 0.001) return;
+  const now  = audioCtx.currentTime;
+  const dur  = 0.25;
+  const src  = audioCtx.createBufferSource();
+  const env  = audioCtx.createGain();
+  src.buffer = currentGranularBuffer;
+  src.connect(env).connect(granularGain);
+  const offset = Math.random() * currentGranularBuffer.duration;
+  env.gain.setValueAtTime(0, now);
+  env.gain.linearRampToValueAtTime(1, now + 0.02);
+  env.gain.setValueAtTime(1, now + dur - 0.02);
+  env.gain.linearRampToValueAtTime(0, now + dur);
+  src.start(now, offset, dur + 0.05);
+  src.onended = () => { try { src.disconnect(); env.disconnect(); } catch(e){} };
+}
+
+// ── State variables ────────────────────────────────────────
+let evolveRateSec     = 30;
+let autoEvolveEnabled = false;
+let autoEvolveTimer   = null;
+let seqOn = false, seqIdx = 0, seqTimer = null;
+let randAmt = 0, lastRand = 0, randTimer = null;
+let probGateTimer = null;
+let envFollowInterval = null;
+let baseStereoWidth = 1.0;
+let baseFilterHz    = 5000;
+let baseRingDepth   = 0;
+
+const PAN_DRIFT    = 0.20;
+const WIDTH_DRIFT  = 0.40;
+const FILTER_OCT_DRIFT = 0.50;
+
+// FIX #1: Matrix base values — modulation applied as offset from here
+const matrixBases = {
+  filterFreq:  5000,
+  reverbMix:   0.3,
+  ringModFreq: 30,
+  stereoWidth: 1.0
+};
+
+// Modulation sources (updated in main loop + events)
+const sources = { LFO: 0, Env: 0, Drift: 0, Seq: 0 };
+
+// Memory system state
+const memorySnapshots = [];
+let memoryAutoTimer = null;
+
+// ── FIX #1 & #6: Matrix destinations with base values ─────
+const modDestinations = [
+  { name: 'Filter Freq',   key: 'filterFreq',  param: masterFilter.frequency,  scale: 5000,  min: 80,   max: 16000 },
+  { name: 'Reverb Mix',    key: 'reverbMix',   param: fdnReverb.wet.gain,       scale: 1,     min: 0,    max: 1     },
+  { name: 'Ring Mod Freq', key: 'ringModFreq', param: ringModOsc.frequency,     scale: 500,   min: 0,    max: 2000  },
+  { name: 'Stereo Width',  key: 'stereoWidth', param: sScale.gain,              scale: 1,     min: 0,    max: 2     }
+];
+
+// ── Random drift ───────────────────────────────────────────
+function applyRandom(r) {
+  const now = audioCtx.currentTime, tau = 1.5;
+  const k = Math.max(0, Math.min(1, randAmt)) * r;
+  sources.Drift = r * randAmt;
+  masterFilter.frequency.setTargetAtTime(
+    Math.min(16000, Math.max(80, baseFilterHz * Math.pow(2, k * FILTER_OCT_DRIFT))), now, tau
+  );
+  sScale.gain.setTargetAtTime(Math.min(2, Math.max(0, baseStereoWidth + k * WIDTH_DRIFT)), now, tau);
+  waves.forEach(type =>
+    panners[type].pan.setTargetAtTime(
+      Math.min(1, Math.max(-1, (panBase[type]??0) + k * PAN_DRIFT)), now, tau
+    )
+  );
+}
+
+function startRandomDriftLoop() {
+  if (randTimer) clearTimeout(randTimer);
+  const tick = () => {
+    lastRand = Math.random() * 2 - 1;
+    applyRandom(lastRand);
+    randTimer = setTimeout(tick, 5000);
+  };
+  tick();
+}
+startRandomDriftLoop();
+
+// ── Cross modulation ───────────────────────────────────────
+let crossModInterval = null;
+function startCrossMod(amount, rate) {
+  if (crossModInterval) clearInterval(crossModInterval);
+  if (amount <= 0) return;
+  crossModInterval = setInterval(() => {
+    const mod = Math.sin(audioCtx.currentTime * rate * Math.PI * 2) * amount * 20;
+    oscillators['square'].l.detune.setTargetAtTime(mod, audioCtx.currentTime, 0.1);
+    oscillators['square'].r.detune.setTargetAtTime(mod, audioCtx.currentTime, 0.1);
+  }, 50);
+}
+
+// ── FIX #4: Probability gate — owns probGateGain only ─────
+function startProbabilityGate(chance, rate) {
+  if (probGateTimer) clearInterval(probGateTimer);
+  if (chance >= 1 || rate <= 0) {
+    probGateGain.gain.setTargetAtTime(1, audioCtx.currentTime, 0.01);
+    return;
+  }
+  probGateTimer = setInterval(() => {
+    const pass = Math.random() < chance;
+    probGateGain.gain.setTargetAtTime(pass ? 1 : 0, audioCtx.currentTime, 0.05);
+  }, 1000 / rate);
+}
+
+// ── Auto-evolve ────────────────────────────────────────────
+function triggerEvolve() {
+  const T = evolveRateSec;
+  masterFilter.frequency.linearRampToValueAtTime(8000, audioCtx.currentTime + T/2);
+  masterFilter.frequency.linearRampToValueAtTime(baseFilterHz, audioCtx.currentTime + T);
+  waves.forEach(type => {
+    oscillators[type].l.detune.linearRampToValueAtTime(50, audioCtx.currentTime + T/2);
+    oscillators[type].l.detune.linearRampToValueAtTime(0,  audioCtx.currentTime + T);
+    panners[type].pan.linearRampToValueAtTime((Math.random()*2-1)*0.7, audioCtx.currentTime + T);
+  });
+  const shimVol = shimmerGain.gain.value;
+  shimmerGain.gain.linearRampToValueAtTime(Math.min(1, shimVol + 0.3), audioCtx.currentTime + T/2);
+  shimmerGain.gain.linearRampToValueAtTime(shimVol, audioCtx.currentTime + T);
+}
+
+function startAutoEvolve() {
+  if (autoEvolveTimer) clearInterval(autoEvolveTimer);
+  autoEvolveTimer = setInterval(() => { if (autoEvolveEnabled) triggerEvolve(); }, evolveRateSec * 1000);
+}
+
+// ── FIX #16: Step sequencer re-reads steps each tick ──────
+const stepIds = [...Array(8).keys()].map(i => `seqStep${i}`);
+function readSteps() {
+  return stepIds.map(id => {
+    const el = document.getElementById(id);
+    return el ? Math.max(-1, Math.min(1, parseFloat(el.value)||0)) : 0;
+  });
+}
+
+function applyStep(v) {
+  const now   = audioCtx.currentTime;
+  const smooth = parseFloat(document.getElementById('seqSmooth')?.value||'2');
+  const tau    = Math.max(0.001, smooth/3);
+  const amtF   = parseFloat(document.getElementById('seqAmtFilter')?.value||'0');
+  const amtR   = parseFloat(document.getElementById('seqAmtRing')?.value||'0');
+  sources.Seq  = v;
+  masterFilter.frequency.setTargetAtTime(
+    Math.max(80, Math.min(16000, baseFilterHz * Math.pow(2, v * amtF))), now, tau
+  );
+  ringModGain.gain.setTargetAtTime(
+    Math.max(0, Math.min(1, baseRingDepth + v * amtR)), now, tau
+  );
+}
+
+function startSeq() {
+  if (seqOn) return;
+  seqOn = true; seqIdx = 0;
+  document.getElementById('seqToggle').innerText = 'Stop Sequencer';
+  document.getElementById('seqLed').classList.add('active');
+  // FIX #16: tick reads steps fresh every call
+  const tick = () => {
+    if (!seqOn) return;
+    const steps    = readSteps();
+    const stepTime = parseFloat(document.getElementById('seqStepTime')?.value||'8');
+    applyStep(steps[seqIdx]);
+    seqIdx = (seqIdx + 1) % steps.length;
+    seqTimer = setTimeout(tick, stepTime * 1000);
+  };
+  tick();
+}
+
+function stopSeq(restore=false) {
+  seqOn = false;
+  document.getElementById('seqToggle').innerText = 'Start Sequencer';
+  document.getElementById('seqLed').classList.remove('active');
+  if (seqTimer) { clearTimeout(seqTimer); seqTimer=null; }
+  if (restore) {
+    masterFilter.frequency.setTargetAtTime(baseFilterHz, audioCtx.currentTime, 0.2);
+    ringModGain.gain.setTargetAtTime(baseRingDepth, audioCtx.currentTime, 0.2);
+  }
+}
+
+// ── FIX #14: Tectonic Drift — actual audio logic ──────────
+function updateHarmonicDrift() {
+  if (!document.getElementById('harmonicDriftEnable')?.checked) return;
+  const cycleSecs = parseFloat(document.getElementById('harmonicCycle')?.value||'20') * 60;
+  const depthSemi = parseFloat(document.getElementById('harmonicDepth')?.value||'3');
+  const phase     = (audioCtx.currentTime % cycleSecs) / cycleSecs;
+  const semiOff   = Math.sin(phase * Math.PI * 2) * depthSemi;
+  waves.forEach(type => {
+    const target = pitches[type] * Math.pow(2, semiOff / 12);
+    oscillators[type].l.frequency.setTargetAtTime(target, audioCtx.currentTime, 3);
+    oscillators[type].r.frequency.setTargetAtTime(target + binauralHz, audioCtx.currentTime, 3);
+  });
+  updateSupersawPitch(pitches['sine'] * Math.pow(2, semiOff / 12));
+}
+
+function updateTimbralDrift() {
+  if (!document.getElementById('timbralDriftEnable')?.checked) return;
+  const cycleSecs = parseFloat(document.getElementById('timbralCycle')?.value||'15') * 60;
+  const speed     = parseFloat(document.getElementById('timbralSpeed')?.value||'0.5');
+  const phase     = (audioCtx.currentTime % cycleSecs) / cycleSecs;
+  const morphVal  = (Math.sin(phase * Math.PI * 2 * (0.5 + speed)) + 1) / 2;
+  const pw        = 0.1 + morphVal * 0.8;
+  const wave      = makePulseWave(pw);
+  oscillators['pulse'].l.setPeriodicWave(wave);
+  oscillators['pulse'].r.setPeriodicWave(wave);
+  if (pulseCompGain) pulseCompGain.gain.value = getPWMCompensation(pw);
+}
+
+function updateSpatialDrift() {
+  if (!document.getElementById('spatialDriftEnable')?.checked) return;
+  const cycleSecs = parseFloat(document.getElementById('spatialCycle')?.value||'25') * 60;
+  const range     = parseFloat(document.getElementById('spatialRange')?.value||'1');
+  const phase     = (audioCtx.currentTime % cycleSecs) / cycleSecs;
+  const widthMod  = (Math.sin(phase * Math.PI * 2) * 0.5 + 0.5) * range;
+  sScale.gain.setTargetAtTime(
+    Math.min(2, Math.max(0, baseStereoWidth + widthMod - range / 2)),
+    audioCtx.currentTime, 5
+  );
+}
+
+function updateTectonicTimelines() {
+  ['harmonic','timbral','spatial'].forEach(plate => {
+    const enabled = document.getElementById(`${plate}DriftEnable`)?.checked;
+    document.getElementById(`${plate}Led`)?.classList.toggle('active', !!enabled);
+    if (!enabled) return;
+    const cycleSecs = parseFloat(document.getElementById(`${plate}Cycle`)?.value||'20') * 60;
+    const phase = (audioCtx.currentTime % cycleSecs) / cycleSecs;
+    const pBar  = document.getElementById(`${plate}Progress`);
+    const pMark = document.getElementById(`${plate}Marker`);
+    if (pBar)  pBar.style.width  = (phase * 100) + '%';
+    if (pMark) pMark.style.left = (phase * 100) + '%';
+  });
+}
+
+// ── FIX #15: Memory system ─────────────────────────────────
+function getPresetState() {
+  const state = {};
+  document.querySelectorAll('input[type="range"]').forEach(el  => { if (el.id) state[el.id] = el.value; });
+  document.querySelectorAll('input[type="checkbox"]').forEach(el => { if (el.id) state[el.id] = el.checked; });
+  return state;
+}
+
+function applyPresetState(state) {
+  Object.entries(state).forEach(([id, value]) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (el.type === 'checkbox') el.checked = value;
+    else el.value = value;
+    el.dispatchEvent(new Event('input'));
+  });
+}
+
+function takeSnapshot() {
+  const depth = parseInt(document.getElementById('memoryDepth')?.value||'5');
+  memorySnapshots.push(getPresetState());
+  if (memorySnapshots.length > depth * 2) memorySnapshots.shift();
+  const el = document.getElementById('memoryCount');
+  if (el) el.textContent = memorySnapshots.length;
+}
+
+function recallRandom() {
+  if (memorySnapshots.length === 0) return;
+  const depth = parseInt(document.getElementById('memoryDepth')?.value||'5');
+  const pool  = memorySnapshots.slice(-Math.min(depth, memorySnapshots.length));
+  applyPresetState(pool[Math.floor(Math.random() * pool.length)]);
+}
+
+function startMemoryAuto() {
+  if (memoryAutoTimer) clearInterval(memoryAutoTimer);
+  const mins = parseInt(document.getElementById('memoryInterval')?.value||'5');
+  memoryAutoTimer = setInterval(() => {
+    if (!document.getElementById('memoryEnable')?.checked) return;
+    takeSnapshot();
+    const prob = parseFloat(document.getElementById('memoryProbability')?.value||'0.5');
+    if (Math.random() < prob && memorySnapshots.length > 1) recallRandom();
+  }, mins * 60 * 1000);
+}
+
+// ── FIX #7: Unified rAF loop (was two separate loops) ─────
+const waveL = new Uint8Array(analL.frequencyBinCount);
+const waveR = new Uint8Array(analR.frequencyBinCount);
+let frameCount = 0;
+
+// FIX #1 & FIX #6: processMatrix at ~20 Hz, using base values
+function processMatrix() {
+  // LFO source from audio clock (not rAF time)
+  sources.LFO = Math.sin(audioCtx.currentTime * lfo.frequency.value * Math.PI * 2);
+
+  document.querySelectorAll('.matrix-row').forEach(row => {
+    const srcName = row.querySelector('.mtx-src')?.value;
+    const destIdx = parseInt(row.querySelector('.mtx-dest')?.value||'0');
+    const amt     = parseFloat(row.querySelector('.mtx-amt')?.value||'0');
+    const srcVal  = sources[srcName] || 0;
+    const dest    = modDestinations[destIdx];
+    if (!dest?.param) return;
+    const base   = matrixBases[dest.key] ?? 0;
+    const target = Math.max(dest.min, Math.min(dest.max, base + srcVal * amt * dest.scale));
+    dest.param.setTargetAtTime(target, audioCtx.currentTime, 0.05);
+  });
+}
+
+function mainLoop() {
+  requestAnimationFrame(mainLoop);
+  frameCount++;
+
+  // ── Visualizer (every frame) ──────────────────────────
+  const canvas    = document.getElementById('visualizer');
+  const canvasCtx = canvas.getContext('2d');
+  const gonCanvas = document.getElementById('goniometer');
+  const gonCtx    = gonCanvas.getContext('2d');
+
+  analyser.getByteTimeDomainData(dataArray);
+  canvasCtx.fillStyle = 'rgb(10,15,16)';
+  canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
+  canvasCtx.lineWidth = 2;
+  canvasCtx.strokeStyle = '#0ff';
+  canvasCtx.beginPath();
+  const sw = canvas.width / bufferLength;
+  let x = 0;
+  for (let i = 0; i < bufferLength; i++) {
+    const y = (dataArray[i] / 128.0) * canvas.height / 2;
+    i===0 ? canvasCtx.moveTo(x,y) : canvasCtx.lineTo(x,y);
+    x += sw;
+  }
+  canvasCtx.stroke();
+
+  analL.getByteTimeDomainData(waveL);
+  analR.getByteTimeDomainData(waveR);
+  gonCtx.fillStyle = 'rgba(0,0,0,0.2)';
+  gonCtx.fillRect(0, 0, gonCanvas.width, gonCanvas.height);
+  gonCtx.lineWidth = 1; gonCtx.strokeStyle = '#0f0';
+  gonCtx.beginPath();
+  for (let i = 0; i < waveL.length; i += 4) {
+    const l = (waveL[i]-128)/128, r = (waveR[i]-128)/128;
+    const gx = gonCanvas.width/2  + (r+l)*0.5*gonCanvas.width/2;
+    const gy = gonCanvas.height/2 + (r-l)*0.5*gonCanvas.height/2;
+    i===0 ? gonCtx.moveTo(gx,gy) : gonCtx.lineTo(gx,gy);
+  }
+  gonCtx.stroke();
+
+  // ── Modulation matrix (~20 Hz) ─────────────────────────
+  if (frameCount % 3 === 0) processMatrix();
+
+  // ── Tectonic drift (~5 Hz) ─────────────────────────────
+  if (frameCount % 12 === 0) {
+    updateHarmonicDrift();
+    updateTimbralDrift();
+    updateSpatialDrift();
+    updateTectonicTimelines();
+  }
+}
+mainLoop();
+
+// ── UI EVENT HANDLERS ──────────────────────────────────────
+
+// Tabs
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelector(`[data-tab="${btn.dataset.tab}"].tab-content`).classList.add('active');
+  });
+});
+
+// Oscillator volumes
+document.querySelectorAll('.knob.volume').forEach(k => {
+  k.addEventListener('input', e => {
+    const type = e.target.dataset.type;
+    const v    = parseFloat(e.target.value);
+    volumeLevels[type] = v;
+    gains[type].gain.value = Math.max(MIN_VOICE_GAIN, v);
+    updateVoiceLED(type, v);
+  });
+});
+
+// FIX #3 & FIX #10: Pitch — recalculates binaural + supersaw
+document.querySelectorAll('.knob.pitch').forEach(k => {
+  k.addEventListener('input', e => {
+    const type = e.target.dataset.type;
+    const val  = parseFloat(e.target.value);
+    pitches[type] = val;
+    oscillators[type].l.frequency.value = val;
+    oscillators[type].r.frequency.value = val + binauralHz; // FIX #3
+    if (type === 'sine') updateSupersawPitch(val);          // FIX #10
+  });
+});
+
+document.querySelectorAll('.knob.pan').forEach(k => {
+  k.addEventListener('input', e => {
+    const type = e.target.dataset.type;
+    const v    = parseFloat(e.target.value);
+    panners[type].pan.value = v;
+    panBase[type] = v;
+  });
+});
+
+function updateVoiceLED(voice, volume) {
+  document.querySelector(`[data-voice="${voice}"]`)?.classList.toggle('active', volume > 0.05);
+}
+
+// FIX #11: Wave morph syncs volume sliders for consistency
+document.getElementById('waveMorph')?.addEventListener('input', e => {
+  const val = parseFloat(e.target.value);
+  let sine=0, square=0, saw=0;
+  if (val <= 0.5) { sine = 1-(val/0.5); square = val/0.5; }
+  else            { square = 1-((val-0.5)/0.5); saw = (val-0.5)/0.5; }
+  const levels = { sine, square, sawtooth: saw };
+  Object.entries(levels).forEach(([type, level]) => {
+    gains[type].gain.value = Math.max(MIN_VOICE_GAIN, level);
+    volumeLevels[type]     = level;
+    updateVoiceLED(type, level);
+    const slider = document.querySelector(`[data-type="${type}"].volume`);
+    if (slider) slider.value = level;
+  });
+});
+
+// Pulse width
+document.getElementById('pulseWidth')?.addEventListener('input', e => {
+  pulseWidth = parseFloat(e.target.value)||0.5;
+  const wave = makePulseWave(pulseWidth);
+  oscillators['pulse'].l.setPeriodicWave(wave);
+  oscillators['pulse'].r.setPeriodicWave(wave);
+  if (pulseCompGain) pulseCompGain.gain.value = getPWMCompensation(pulseWidth);
+});
+
+// Cross mod
+document.getElementById('crossMod')?.addEventListener('input', e =>
+  startCrossMod(parseFloat(e.target.value), parseFloat(document.getElementById('crossModRate')?.value||'5'))
+);
+document.getElementById('crossModRate')?.addEventListener('input', e =>
+  startCrossMod(parseFloat(document.getElementById('crossMod')?.value||'0'), parseFloat(e.target.value))
+);
+
+// Effects
+document.getElementById('reverb')?.addEventListener('input', e => {
+  const v = parseFloat(e.target.value);
+  fdnReverb.wet.gain.value = v;
+  matrixBases.reverbMix = v;
+});
+document.getElementById('reverbDecay')?.addEventListener('input', e => fdnReverb.setDecay(parseFloat(e.target.value)));
+document.getElementById('distortion')?.addEventListener('input', e => { distortionNode.curve = makeSaturationCurve(parseFloat(e.target.value)); });
+document.getElementById('distortion2')?.addEventListener('input', e => { distortionNode2.curve = makeSaturationCurve(parseFloat(e.target.value)*2); });
+document.getElementById('tremolo')?.addEventListener('input', e => { tremoloOsc.frequency.value = parseFloat(e.target.value); });
+document.getElementById('filterFreq')?.addEventListener('input', e => {
+  const v = parseFloat(e.target.value);
+  masterFilter.frequency.value = v; baseFilterHz = v; matrixBases.filterFreq = v;
+});
+document.getElementById('filterRes')?.addEventListener('input', e => { masterFilter.Q.value = parseFloat(e.target.value); });
+document.getElementById('delayTime')?.addEventListener('input', e => { delayNode.delayTime.value = parseFloat(e.target.value); });
+document.getElementById('delayFeedback')?.addEventListener('input', e => { delayFeedbackGain.gain.value = parseFloat(e.target.value); });
+
+// Modulation
+document.getElementById('lfoSpeed')?.addEventListener('input', e => { lfo.frequency.value = parseFloat(e.target.value); });
+// FIX #20: Direct cent value — no /1000 division
+document.getElementById('lfoDepth')?.addEventListener('input', e => { lfoGain.gain.value = parseFloat(e.target.value); });
+
+document.getElementById('ringModFreq')?.addEventListener('input', e => {
+  const v = parseFloat(e.target.value);
+  ringModOsc.frequency.value = v; matrixBases.ringModFreq = v;
+});
+document.getElementById('ringModDepth')?.addEventListener('input', e => {
+  const v = parseFloat(e.target.value); ringModGain.gain.value = v; baseRingDepth = v;
+});
+document.getElementById('randAmount')?.addEventListener('input', e => {
+  randAmt = parseFloat(e.target.value)||0; applyRandom(lastRand);
+});
+
+// Envelope follower
+document.getElementById('envFollow')?.addEventListener('input', e => {
+  const sensitivity = parseFloat(e.target.value);
+  if (envFollowInterval) clearInterval(envFollowInterval);
+  if (sensitivity <= 0) return;
+  envFollowInterval = setInterval(() => {
+    analyser.getByteTimeDomainData(dataArray);
+    let sum = 0;
+    for (let i=0;i<dataArray.length;i++) sum+=Math.abs(dataArray[i]-128);
+    const level = (sum/dataArray.length)/128;
+    sources.Env = level;
+    const fm = parseFloat(document.getElementById('envToFilter')?.value||'0');
+    if (fm > 0)
+      masterFilter.frequency.setTargetAtTime(
+        Math.min(16000, baseFilterHz*(1+level*sensitivity*fm*5)), audioCtx.currentTime, 0.05
+      );
+  }, 50);
+});
+document.getElementById('envToFilter')?.addEventListener('input', () =>
+  document.getElementById('envFollow').dispatchEvent(new Event('input'))
+);
+
+// FIX #4: Probability gate uses dedicated node
+document.getElementById('probGate')?.addEventListener('input', e =>
+  startProbabilityGate(parseFloat(e.target.value), parseFloat(document.getElementById('probRate')?.value||'2'))
+);
+document.getElementById('probRate')?.addEventListener('input', e =>
+  startProbabilityGate(parseFloat(document.getElementById('probGate')?.value||'1'), parseFloat(e.target.value))
+);
+
+// Sequencer
+document.getElementById('seqToggle')?.addEventListener('click', () => { if (!seqOn) startSeq(); else stopSeq(true); });
+document.getElementById('seqRandomize')?.addEventListener('click', () => {
+  stepIds.forEach(id => { const el=document.getElementById(id); if(el) el.value=(Math.random()*2-1).toFixed(2); });
+});
+
+// Layers
+document.getElementById('supersawVolume')?.addEventListener('input', e => { supersawGain.gain.value = parseFloat(e.target.value); });
+document.getElementById('shimmerVolume')?.addEventListener('input', e => { shimmerGain.gain.value = parseFloat(e.target.value); });
+document.getElementById('harmonizerVolume')?.addEventListener('input', e => { harmonizerGain.gain.value = parseFloat(e.target.value); });
+document.getElementById('harmonizerPitch')?.addEventListener('input', e => {
+  harmonizerPitchGain.gain.value = 0.005*(Math.pow(2, parseFloat(e.target.value)/12)-1);
+});
+document.getElementById('chorusVolume')?.addEventListener('input', e => { chorusGain.gain.value = parseFloat(e.target.value); });
+document.getElementById('wowFlutterVolume')?.addEventListener('input', e => { wowFlutterGain.gain.value = parseFloat(e.target.value); });
+document.getElementById('granularDepth')?.addEventListener('input', e => { granularGain.gain.value = parseFloat(e.target.value); });
+document.getElementById('granularRate')?.addEventListener('input', e => {
+  if (granularInterval) clearInterval(granularInterval);
+  const rate = parseFloat(e.target.value);
+  if (rate > 0) granularInterval = setInterval(playGranular, 1000/rate);
+});
+
+// Texture
+document.getElementById('radioVolume')?.addEventListener('input', e => {
+  const v = parseFloat(e.target.value);
+  sdrGain.gain.value = v;
+  // FIX #8: gate processing when radio is off
+  noiseGate.gain.setTargetAtTime(v > 0 ? 1 : 0, audioCtx.currentTime, 0.1);
+});
+document.getElementById('radioTuning')?.addEventListener('input', e => {
+  const freq = 3000 + (parseFloat(e.target.value)/100)*27000;
+  sdrFilter.frequency.value = freq; sdrDetuneGain.gain.value = 50 + freq/300;
+});
+document.getElementById('noiseColor')?.addEventListener('input', e => {
+  const t = Math.min(1, Math.max(0, parseFloat(e.target.value)));
+  whiteMix.gain.value = Math.max(0, 1-t*2);
+  pinkMix.gain.value  = 1-Math.abs(t*2-1);
+  brownMix.gain.value = Math.max(0, 2*t-1);
+});
+document.getElementById('hazeMix')?.addEventListener('input', e => { hazeMixGain.gain.value = parseFloat(e.target.value)||0; });
+document.getElementById('hazeRate')?.addEventListener('input', e => {
+  if (hazeNode?.port) hazeNode.port.postMessage({ rate: (parseFloat(e.target.value)||12)*1000 });
+});
+document.getElementById('subMix')?.addEventListener('input', e => { subMixGain.gain.value = parseFloat(e.target.value)||0; });
+document.getElementById('subLPCutoff')?.addEventListener('input', e => { subLP.frequency.value = parseFloat(e.target.value)||220; });
+
+// Master
+document.getElementById('stereoWidth')?.addEventListener('input', e => {
+  const w = parseFloat(e.target.value);
+  sScale.gain.value = isFinite(w) ? w : 1;
+  baseStereoWidth = sScale.gain.value;
+  matrixBases.stereoWidth = w;
+});
+
+// FIX #3: Binaural — central applyBinaural() recalculates all oscillators
+document.getElementById('binauralBeat')?.addEventListener('input', e => {
+  binauralHz = parseFloat(e.target.value); applyBinaural();
+});
+
+document.getElementById('autoEvolve')?.addEventListener('change', e => {
+  autoEvolveEnabled = e.target.checked;
+  document.getElementById('evolveLed').classList.toggle('active', autoEvolveEnabled);
+  if (autoEvolveEnabled) { startAutoEvolve(); triggerEvolve(); }
+  else if (autoEvolveTimer) { clearInterval(autoEvolveTimer); autoEvolveTimer=null; }
+});
+
+// FIX #19: evolveRate restarts timer when changed while active
+document.getElementById('evolveRate')?.addEventListener('input', e => {
+  evolveRateSec = parseFloat(e.target.value);
+  if (autoEvolveEnabled) startAutoEvolve();
+});
+
+document.getElementById('evolveBtn')?.addEventListener('click', triggerEvolve);
+
+// Tectonic LED toggles
+['harmonic','timbral','spatial'].forEach(plate => {
+  document.getElementById(`${plate}DriftEnable`)?.addEventListener('change', e => {
+    document.getElementById(`${plate}Led`)?.classList.toggle('active', e.target.checked);
+  });
+});
+
+// FIX #15: Memory system — fully implemented
+document.getElementById('memorySnapshot')?.addEventListener('click', takeSnapshot);
+document.getElementById('memoryRecall')?.addEventListener('click', recallRandom);
+document.getElementById('memoryClear')?.addEventListener('click', () => {
+  memorySnapshots.length = 0;
+  const el = document.getElementById('memoryCount'); if (el) el.textContent='0';
+});
+document.getElementById('memoryEnable')?.addEventListener('change', e => {
+  document.getElementById('memoryLed')?.classList.toggle('active', e.target.checked);
+  if (e.target.checked) startMemoryAuto();
+  else if (memoryAutoTimer) { clearInterval(memoryAutoTimer); memoryAutoTimer=null; }
+});
+document.getElementById('memoryInterval')?.addEventListener('input', () => {
+  if (document.getElementById('memoryEnable')?.checked) startMemoryAuto();
+});
+
+// XY Pad (with touch support)
+const xyPad    = document.getElementById('xyPad');
+const xyCursor = document.getElementById('xyCursor');
+let xyActive = false;
+
+function updateXYPad(cx, cy) {
+  const rect  = xyPad.getBoundingClientRect();
+  const xNorm = Math.max(0, Math.min(1, cx / rect.width));
+  const yNorm = 1 - Math.max(0, Math.min(1, cy / rect.height));
+  xyCursor.style.left = (xNorm*100)+'%';
+  xyCursor.style.top  = ((1-yNorm)*100)+'%';
+  [
+    { id: document.getElementById('xyParamX').value, norm: xNorm },
+    { id: document.getElementById('xyParamY').value, norm: yNorm }
+  ].forEach(({ id, norm }) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.value = parseFloat(el.min) + norm*(parseFloat(el.max)-parseFloat(el.min));
+      el.dispatchEvent(new Event('input'));
     }
-    function createBrownNoise(length) {
-      const buf = audioCtx.createBuffer(1, length, audioCtx.sampleRate);
-      const d = buf.getChannelData(0);
-      let y = 0;
-      for (let i = 0; i < length; i++) {
-        const x = Math.random() * 2 - 1;
-        y += 0.02 * x;
-        if (y > 1) y = 1; if (y < -1) y = -1;
-        d[i] = y;
-      }
-      return buf;
-    }
-    
-    const noiseLen = audioCtx.sampleRate * 5;
-    const whiteBuf = audioCtx.createBuffer(1, noiseLen, audioCtx.sampleRate);
-    const wd = whiteBuf.getChannelData(0); for(let i=0;i<noiseLen;i++) wd[i]=Math.random()*2-1;
-    
-    const pinkBuf = createPinkishNoise(noiseLen);
-    const brownBuf = createBrownNoise(noiseLen);
-    
-    // Active noise buffer for granular (defaults to white)
-    let currentGranularBuffer = whiteBuf;
+  });
+}
 
-    const whiteSrc = audioCtx.createBufferSource(); whiteSrc.buffer = whiteBuf; whiteSrc.loop = true;
-    const pinkSrc = audioCtx.createBufferSource(); pinkSrc.buffer = pinkBuf; pinkSrc.loop = true;
-    const brownSrc = audioCtx.createBufferSource(); brownSrc.buffer = brownBuf; brownSrc.loop = true;
-    
-    const whiteMix = audioCtx.createGain(); whiteMix.gain.value = 1;
-    const pinkMix = audioCtx.createGain(); pinkMix.gain.value = 0;
-    const brownMix = audioCtx.createGain(); brownMix.gain.value = 0;
-    
-    whiteSrc.connect(whiteMix).connect(sdrFilter);
-    pinkSrc.connect(pinkMix).connect(sdrFilter);
-    brownSrc.connect(brownMix).connect(sdrFilter);
-    
-    whiteSrc.start(); pinkSrc.start(); brownSrc.start();
+xyPad.addEventListener('mousedown', e => {
+  xyActive=true; const r=xyPad.getBoundingClientRect(); updateXYPad(e.clientX-r.left, e.clientY-r.top);
+});
+xyPad.addEventListener('touchstart', e => {
+  xyActive=true; const r=xyPad.getBoundingClientRect(), t=e.touches[0];
+  updateXYPad(t.clientX-r.left, t.clientY-r.top); e.preventDefault();
+}, { passive:false });
+document.addEventListener('mousemove', e => {
+  if (!xyActive) return; const r=xyPad.getBoundingClientRect(); updateXYPad(e.clientX-r.left,e.clientY-r.top);
+});
+document.addEventListener('touchmove', e => {
+  if (!xyActive) return; const r=xyPad.getBoundingClientRect(), t=e.touches[0];
+  updateXYPad(t.clientX-r.left, t.clientY-r.top);
+});
+document.addEventListener('mouseup',  () => { xyActive=false; });
+document.addEventListener('touchend', () => { xyActive=false; });
 
-    // Haze & Sub
-    let hazeNode = null;
-    const hazeMixGain = audioCtx.createGain();
-    hazeMixGain.gain.value = 0;
+// Main drone toggle
+document.getElementById('toggleDrone')?.addEventListener('click', async () => {
+  await audioCtx.resume();
+  const on = outputBus.gain.value > 0.001;
+  outputBus.gain.setTargetAtTime(on ? 0 : 1, audioCtx.currentTime, 0.15);
+  document.getElementById('toggleDrone').innerText = on ? 'Start Drone' : 'Stop Drone';
+});
 
-    let subNode = null;
-    const subPreLP = audioCtx.createGain();
-    const subLP = audioCtx.createBiquadFilter();
-    subLP.type = 'lowpass';
-    subLP.frequency.value = 220;
-    const subMixGain = audioCtx.createGain();
-    subMixGain.gain.value = 0;
-
-    // Stereo width
-    const split = audioCtx.createChannelSplitter(2);
-    const merge = audioCtx.createChannelMerger(2);
-    const gLtoM = audioCtx.createGain();
-    gLtoM.gain.value = 0.7071;
-    const gRtoM = audioCtx.createGain();
-    gRtoM.gain.value = 0.7071;
-    const mSum = audioCtx.createGain();
-    mSum.gain.value = 1.0;
-    const gLtoS = audioCtx.createGain();
-    gLtoS.gain.value = 0.7071;
-    const gRtoS = audioCtx.createGain();
-    gRtoS.gain.value = -0.7071;
-    const sSum = audioCtx.createGain();
-    sSum.gain.value = 1.0;
-    const sScale = audioCtx.createGain();
-    sScale.gain.value = 1.0;
-    const mToL = audioCtx.createGain();
-    mToL.gain.value = 0.7071;
-    const sToL = audioCtx.createGain();
-    sToL.gain.value = 0.7071;
-    const mToR = audioCtx.createGain();
-    mToR.gain.value = 0.7071;
-    const sToR = audioCtx.createGain();
-    sToR.gain.value = -0.7071;
-
-    const breathBus = audioCtx.createGain();
-    breathBus.gain.value = 1;
-
-    const finalLimiter = audioCtx.createDynamicsCompressor();
-    finalLimiter.threshold.value = -1;
-    finalLimiter.knee.value = 10;
-    finalLimiter.ratio.value = 12;
-    finalLimiter.attack.value = 0.003;
-    finalLimiter.release.value = 0.250;
-
-    // Analyser for visualization
-    const analyser = audioCtx.createAnalyser();
-    analyser.fftSize = 2048;
-    const bufferLength = analyser.frequencyBinCount;
-    const dataArray = new Uint8Array(bufferLength);
-    const spectrumArray = new Uint8Array(bufferLength);
-    // Stereo Analyser for Goniometer
-    const splitter = audioCtx.createChannelSplitter(2);
-    const analL = audioCtx.createAnalyser();
-    const analR = audioCtx.createAnalyser();
-    analL.fftSize = 1024; analR.fftSize = 1024;
-    splitter.connect(analL, 0);
-    splitter.connect(analR, 1);
-
-    // ========== STATE VARIABLES ==========
-    let evolveRateSec = 30;
-    let seqOn = false;
-    let seqIdx = 0;
-    let seqTimer = null;
-    let pulseSlewInterval = null;
-    let randAmt = 0;
-    let randTimer = null;
-    let lastRand = 0;
-    const PAN_DRIFT = 0.20;
-    const WIDTH_DRIFT = 0.40;
-    const FILTER_OCT_DRIFT = 0.50;
-    const panBase = {};
-    let baseFilterHz = masterFilter.frequency.value;
-    let baseRingDepth = ringModGain.gain.value;
-    let baseStereoWidth = sScale.gain.value;
-    let basePulseWidth = pulseWidth;
-    let autoEvolveEnabled = false;
-    let autoEvolveTimer = null;
-    let probGateTimer = null;
-    
-    // Matrix State
-    const modMatrix = []; // {src, dest, amount}
-    const sources = {
-        LFO: 0,
-        Env: 0,
-        Drift: 0,
-        Seq: 0
+// Recording
+document.getElementById('recordBtn')?.addEventListener('click', () => {
+  if (!isRecording) {
+    const dest = audioCtx.createMediaStreamDestination();
+    finalLimiter.connect(dest);
+    recordedChunks = [];
+    mediaRecorder = new MediaRecorder(dest.stream);
+    mediaRecorder.ondataavailable = e => recordedChunks.push(e.data);
+    mediaRecorder.onstop = () => {
+      finalLimiter.disconnect(dest);
+      const blob = new Blob(recordedChunks, { type:'audio/webm' });
+      const url  = URL.createObjectURL(blob);
+      const a    = document.createElement('a');
+      a.href=url; a.download=`viceroy-${Date.now()}.webm`; a.click();
+      URL.revokeObjectURL(url);
     };
+    mediaRecorder.start();
+    isRecording=true;
+    document.getElementById('recordBtn').innerText='Stop Recording';
+  } else {
+    mediaRecorder.stop(); isRecording=false;
+    document.getElementById('recordBtn').innerText='Start Recording';
+  }
+});
 
-    // ========== HELPER FUNCTIONS ==========
-    function makePulseWave(duty = 0.5, harmonics = 64) {
-      duty = Math.min(0.95, Math.max(0.05, duty));
-      const size = harmonics + 1;
-      const real = new Float32Array(size);
-      const imag = new Float32Array(size);
-      real[0] = 0;
-      for (let n = 1; n <= harmonics; n++) {
-        const bn = (2 / (n * Math.PI)) * (1 - Math.cos(2 * Math.PI * n * duty));
-        imag[n] = bn;
-        real[n] = 0;
+// FIX #12: Freeze — fully implemented via MediaRecorder capture + loop
+document.getElementById('freezeBtn')?.addEventListener('click', async () => {
+  await audioCtx.resume();
+  const btn = document.getElementById('freezeBtn');
+  if (isFrozen) {
+    if (frozenSource) { try { frozenSource.stop(); } catch(e){} try { frozenSource.disconnect(); } catch(e){} frozenSource=null; }
+    outputBus.gain.setTargetAtTime(1, audioCtx.currentTime, 0.1);
+    isFrozen=false; btn.innerText='Freeze';
+  } else {
+    btn.innerText='Capturing (3s)…'; btn.disabled=true;
+    const dest = audioCtx.createMediaStreamDestination();
+    finalLimiter.connect(dest);
+    const chunks=[]; const fr=new MediaRecorder(dest.stream);
+    fr.ondataavailable = e => chunks.push(e.data);
+    fr.onstop = async () => {
+      try { finalLimiter.disconnect(dest); } catch(e){}
+      const blob = new Blob(chunks, { type:'audio/webm' });
+      const ab   = await blob.arrayBuffer();
+      try {
+        frozenBuffer = await audioCtx.decodeAudioData(ab);
+        outputBus.gain.setTargetAtTime(0, audioCtx.currentTime, 0.05);
+        setTimeout(() => {
+          frozenSource = audioCtx.createBufferSource();
+          frozenSource.buffer = frozenBuffer;
+          frozenSource.loop   = true;
+          frozenSource.connect(audioCtx.destination);
+          frozenSource.connect(analyser);
+          frozenSource.start();
+          isFrozen=true; btn.innerText='Unfreeze'; btn.disabled=false;
+        }, 150);
+      } catch(err) {
+        console.error('Freeze decode failed', err);
+        outputBus.gain.setTargetAtTime(1, audioCtx.currentTime, 0.1);
+        btn.innerText='Freeze'; btn.disabled=false;
       }
-      return audioCtx.createPeriodicWave(real, imag, { disableNormalization: false });
-    }
-
-    function getPWMCompensation(pw) {
-      pw = Math.min(0.95, Math.max(0.05, pw));
-      const c = 1 / Math.sqrt(pw * (1 - pw));
-      return Math.min(c, 2.0);
-    }
-
-    // ========== OSCILLATOR SETUP ==========
-    // We create dual oscillators for binaural logic
-    waves.forEach((type) => {
-      const oscL = audioCtx.createOscillator();
-      const oscR = audioCtx.createOscillator();
-      const gainNode = audioCtx.createGain();
-      const panner = audioCtx.createStereoPanner();
-      const merger = audioCtx.createChannelMerger(2);
-
-      if (type === 'pulse') {
-        const wave = makePulseWave(pulseWidth);
-        oscL.setPeriodicWave(wave);
-        oscR.setPeriodicWave(wave);
-      } else {
-        oscL.type = type;
-        oscR.type = type;
-      }
-      oscL.frequency.value = 110;
-      oscR.frequency.value = 110;
-      
-      gainNode.gain.value = type === 'sine' ? 1 : 0;
-      gainNode.gain.value = Math.max(MIN_VOICE_GAIN, gainNode.gain.value);
-
-      lfoGain.connect(oscL.detune);
-      lfoGain.connect(oscR.detune);
-      
-      oscL.connect(merger, 0, 0);
-      oscR.connect(merger, 0, 1);
-
-      if (type === 'pulse') {
-        pulseCompGain = audioCtx.createGain();
-        pulseCompGain.gain.value = getPWMCompensation(pulseWidth);
-        merger.connect(gainNode).connect(pulseCompGain).connect(panner).connect(masterGain);
-      } else {
-        merger.connect(gainNode).connect(panner).connect(masterGain);
-      }
-      oscL.start();
-      oscR.start();
-
-      oscillators[type] = {l: oscL, r: oscR};
-      gains[type] = gainNode;
-      panners[type] = panner;
-      pitches[type] = 110;
-      panBase[type] = 0;
-    });
-
-    // Supersaw voices
-    const detuneOffsets = [-12, -7, -5, 0, 5, 7, 12];
-    detuneOffsets.forEach(offset => {
-      const osc = audioCtx.createOscillator();
-      const g = audioCtx.createGain();
-      const pan = audioCtx.createStereoPanner();
-      osc.type = 'sawtooth';
-      osc.frequency.value = 110 * Math.pow(2, offset / 12);
-      g.gain.value = 0.1;
-      pan.pan.value = (Math.random() * 2 - 1) * 0.7;
-      osc.connect(g).connect(pan).connect(supersawGain);
-      osc.start();
-    });
-
-    // ========== AUDIO ROUTING ==========
-    masterGain
-      .connect(fdnReverb.input);
-    
-    // FDN Reverb replaces convolver. We connect FDN out to distortions
-    fdnReverb.output
-      .connect(distortion)
-      .connect(distortion2)
-      .connect(biquadFilter)
-      .connect(tiltFilter)
-      .connect(tremoloGain)
-      .connect(delayNode)
-      .connect(ringModGain);
-
-    masterGain.connect(harmonizerDelay);
-    harmonizerDelay.connect(harmonizerGain).connect(ringModGain);
-
-    masterGain.connect(chorusDelay);
-    chorusDelay.connect(chorusGain).connect(ringModGain);
-
-    masterGain.connect(wowFlutterDelay);
-    wowFlutterDelay.connect(wowFlutterGain).connect(ringModGain);
-
-    masterGain.connect(shimmerDelay);
-    shimmerGain.connect(ringModGain);
-
-    supersawGain.connect(ringModGain);
-    granularGain.connect(ringModGain);
-    sdrFilter.connect(sdrGain);
-    sdrGain.connect(ringModGain);
-
-    // Setup worklets for haze & sub
-    async function ensureWorklets() {
-      if (!audioCtx.audioWorklet) return;
-      const hazeCode = `
-        class DownsampleProcessor extends AudioWorkletProcessor {
-          constructor() {
-            super();
-            this.holdSamples = Math.max(1, Math.floor(sampleRate / 12000));
-            this.phase = 0; this.lastL = 0; this.lastR = 0;
-            this.port.onmessage = (e)=> {
-              const rate = Math.max(1, +e.data.rate || 12000);
-              this.holdSamples = Math.max(1, Math.floor(sampleRate / rate));
-            };
-          }
-          process(inputs, outputs) {
-            const input = inputs[0] || [];
-            const out = outputs[0];
-            const inL = (input[0] || new Float32Array(out[0].length));
-            const inR = (input[1] || inL);
-            const oL = out[0], oR = out[1] || out[0];
-            for (let i=0;i<oL.length;i++){
-              if (this.phase===0){ this.lastL=inL[i]; this.lastR=inR[i]; }
-              oL[i]=this.lastL; oR[i]=this.lastR;
-              this.phase = (this.phase + 1) % this.holdSamples;
-            }
-            return true;
-          }
-        }
-        registerProcessor('downsample-processor', DownsampleProcessor);
-      `;
-      const subCode = `
-        class SubDividerProcessor extends AudioWorkletProcessor {
-          constructor(){ super(); this.prev=0; this.cross=0; this.sq2=-1; this.sq3=-1; }
-          process(inputs, outputs){
-            const input = inputs[0] || [];
-            const out = outputs[0];
-            const inL = (input[0] || new Float32Array(out[0].length));
-            const inR = (input[1] || inL);
-            const oL = out[0], oR = out[1] || oL;
-            for (let i=0;i<oL.length;i++){
-              const x = 0.5*((inL[i]||0)+(inR[i]||0));
-              if ((this.prev<=0 && x>0) || (this.prev>=0 && x<0)){
-                this.cross++;
-                if ((this.cross%2)===0) this.sq2 = -this.sq2;
-                if ((this.cross%3)===0) this.sq3 = -this.sq3;
-              }
-              this.prev = x;
-              const y = 0.65*this.sq2 + 0.35*this.sq3;
-              oL[i] = oR[i] = y*0.7;
-            }
-            return true;
-          }
-        }
-        registerProcessor('sub-divider-processor', SubDividerProcessor);
-      `;
-      const hazeBlob = new Blob([hazeCode], { type: 'application/javascript' });
-      const subBlob = new Blob([subCode], { type: 'application/javascript' });
-      await audioCtx.audioWorklet.addModule(URL.createObjectURL(hazeBlob));
-      await audioCtx.audioWorklet.addModule(URL.createObjectURL(subBlob));
-    }
-
-    (async function setupWorklets() {
-      await ensureWorklets();
-      if (audioCtx.audioWorklet) {
-        hazeNode = new AudioWorkletNode(audioCtx, 'downsample-processor', {
-          numberOfInputs: 1,
-          numberOfOutputs: 1,
-          outputChannelCount: [2]
-        });
-        masterGain.connect(hazeNode);
-        hazeNode.connect(hazeMixGain).connect(ringModGain);
-        hazeNode.port.postMessage({ rate: 12000 });
-
-        subNode = new AudioWorkletNode(audioCtx, 'sub-divider-processor', {
-          numberOfInputs: 1,
-          numberOfOutputs: 1,
-          outputChannelCount: [2]
-        });
-        masterGain.connect(subNode);
-        subNode.connect(subPreLP).connect(subLP).connect(subMixGain).connect(ringModGain);
-      }
-    })();
-
-    // Stereo width routing
-    ringModGain.connect(masterFilter);
-    masterFilter.connect(split);
-
-    split.connect(gLtoM, 0);
-    split.connect(gRtoM, 1);
-    gLtoM.connect(mSum);
-    gRtoM.connect(mSum);
-
-    split.connect(gLtoS, 0);
-    split.connect(gRtoS, 1);
-    gLtoS.connect(sSum);
-    gRtoS.connect(sSum);
-    sSum.connect(sScale);
-
-    mSum.connect(mToL).connect(merge, 0, 0);
-    sScale.connect(sToL).connect(merge, 0, 0);
-    mSum.connect(mToR).connect(merge, 0, 1);
-    sScale.connect(sToR).connect(merge, 0, 1);
-
-    merge.connect(breathBus);
-    breathBus.connect(finalLimiter);
-    finalLimiter.connect(outputBus);
-    outputBus.connect(audioCtx.destination);
-    finalLimiter.connect(analyser);
-    finalLimiter.connect(splitter); // For Goniometer
-
-    // Breathing LFO
-    const breathingLFO = audioCtx.createOscillator();
-    const breathingDepth = audioCtx.createGain();
-    const breathingDC = audioCtx.createConstantSource();
-    breathingLFO.type = 'sine';
-    breathingLFO.frequency.value = 0.05;
-    breathingDepth.gain.value = 0.05;
-    breathingDC.offset.value = 1.0;
-    breathingLFO.connect(breathingDepth).connect(breathBus.gain);
-    breathingDC.connect(breathBus.gain);
-    breathingLFO.start();
-    breathingDC.start();
-
-    // ========== MODULATION & DRIFT ==========
-    function applyRandom(r) {
-      const now = audioCtx.currentTime;
-      const k = (Math.max(0, Math.min(1, randAmt)) || 0) * r;
-      // Drift Logic - Mod Source Update
-      sources.Drift = r * randAmt;
-      
-      const tau = 1.5;
-      const fTarget = Math.min(16000, Math.max(80, baseFilterHz * Math.pow(2, k * FILTER_OCT_DRIFT)));
-      masterFilter.frequency.setTargetAtTime(fTarget, now, tau);
-      const wTarget = Math.min(2, Math.max(0, baseStereoWidth + k * WIDTH_DRIFT));
-      sScale.gain.setTargetAtTime(wTarget, now, tau);
-      waves.forEach((type) => {
-        const pBase = panBase[type] ?? 0;
-        const pTarget = Math.min(1, Math.max(-1, pBase + k * PAN_DRIFT));
-        panners[type].pan.setTargetAtTime(pTarget, now, tau);
-      });
-    }
-
-    function startRandomDriftLoop() {
-      if (randTimer) clearTimeout(randTimer);
-      const tick = () => {
-        lastRand = Math.random() * 2 - 1;
-        applyRandom(lastRand);
-        randTimer = setTimeout(tick, 5000);
-      };
-      tick();
-    }
-    startRandomDriftLoop();
-
-    function createOrganicDrift(param, depth, intervalMs) {
-      setInterval(() => {
-        const r = (Math.random() * 2 - 1) * depth;
-        param.linearRampToValueAtTime(r, audioCtx.currentTime + intervalMs / 1000);
-      }, intervalMs);
-    }
-    
-    // Slight drift on oscillators
-    waves.forEach((type) => {
-       createOrganicDrift(oscillators[type].l.detune, 5, 3000);
-       createOrganicDrift(oscillators[type].r.detune, 5, 3200);
-    });
-
-    // Granular playback
-    function playGranular() {
-      if (granularSource) {
-        granularSource.stop();
-        granularSource.disconnect();
-      }
-      granularSource = audioCtx.createBufferSource();
-      granularSource.buffer = currentGranularBuffer;
-      const grainEnv = audioCtx.createGain();
-      grainEnv.gain.setValueAtTime(0, audioCtx.currentTime);
-      grainEnv.gain.linearRampToValueAtTime(1, audioCtx.currentTime + 0.01);
-      grainEnv.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.2);
-      
-      // Random Offset
-      const offset = Math.random() * currentGranularBuffer.duration;
-      
-      granularSource.connect(grainEnv).connect(granularGain);
-      granularSource.start(0, offset);
-    }
-
-    // Cross modulation
-    let crossModInterval = null;
-    function startCrossMod(amount, rate) {
-      if (crossModInterval) clearInterval(crossModInterval);
-      if (amount <= 0) return;
-      crossModInterval = setInterval(() => {
-        const mod = Math.sin(audioCtx.currentTime * rate * Math.PI * 2) * amount * 20;
-        oscillators['square'].l.detune.setTargetAtTime(mod, audioCtx.currentTime, 0.1);
-        oscillators['square'].r.detune.setTargetAtTime(mod, audioCtx.currentTime, 0.1);
-      }, 50);
-    }
-
-    // Probability gate
-    function startProbabilityGate(chance, rate) {
-      if (probGateTimer) clearInterval(probGateTimer);
-      if (rate <= 0) return;
-      probGateTimer = setInterval(() => {
-        const pass = Math.random() < chance;
-        const target = pass ? 1 : 0;
-        masterGain.gain.setTargetAtTime(target * 0.35, audioCtx.currentTime, 0.05);
-      }, 1000 / rate);
-    }
-
-    // Auto-evolve
-    function triggerEvolve() {
-      const T = evolveRateSec;
-      masterFilter.frequency.linearRampToValueAtTime(5000, audioCtx.currentTime + T / 2);
-      masterFilter.frequency.linearRampToValueAtTime(baseFilterHz, audioCtx.currentTime + T);
-      waves.forEach((type) => {
-        oscillators[type].l.detune.linearRampToValueAtTime(50, audioCtx.currentTime + T / 2);
-        oscillators[type].l.detune.linearRampToValueAtTime(0, audioCtx.currentTime + T);
-        panners[type].pan.linearRampToValueAtTime((Math.random() * 2 - 1) * 0.7, audioCtx.currentTime + T);
-      });
-      shimmerGain.gain.linearRampToValueAtTime(0.5, audioCtx.currentTime + T / 2);
-      shimmerGain.gain.linearRampToValueAtTime(shimmerGain.gain.value, audioCtx.currentTime + T);
-    }
-
-    function startAutoEvolve() {
-      if (autoEvolveTimer) clearInterval(autoEvolveTimer);
-      autoEvolveTimer = setInterval(() => {
-        if (autoEvolveEnabled) triggerEvolve();
-      }, evolveRateSec * 1000);
-    }
-
-    // Step sequencer
-    const stepIds = [...Array(8).keys()].map(i => `seqStep${i}`);
-    function readSteps() {
-      return stepIds.map(id => parseFloat(document.getElementById(id).value || '0')).map(x => Math.max(-1, Math.min(1, x)));
-    }
-
-    function clamp(x, lo, hi) {
-      return Math.min(hi, Math.max(lo, x));
-    }
-
-    function applyStep(v) {
-      const now = audioCtx.currentTime;
-      const smooth = parseFloat(document.getElementById('seqSmooth').value || '2');
-      const tau = Math.max(0.001, smooth / 3);
-
-      const amtOct = parseFloat(document.getElementById('seqAmtFilter').value || '0');
-      const amtRing = parseFloat(document.getElementById('seqAmtRing').value || '0');
-
-      sources.Seq = v; // Update Matrix Source
-
-      const filterTarget = clamp(baseFilterHz * Math.pow(2, v * amtOct), 80, 16000);
-      masterFilter.frequency.setTargetAtTime(filterTarget, now, tau);
-
-      const ringTarget = clamp(baseRingDepth + v * amtRing, 0, 1);
-      ringModGain.gain.setTargetAtTime(ringTarget, now, tau);
-    }
-
-    function startSeq() {
-      if (seqOn) return;
-      seqOn = true;
-      seqIdx = 0;
-      document.getElementById('seqToggle').innerText = 'Stop Sequencer';
-      document.getElementById('seqLed').classList.add('active');
-      const steps = readSteps();
-      applyStep(steps[seqIdx]);
-
-      const tick = () => {
-        if (!seqOn) return;
-        const stepTime = parseFloat(document.getElementById('seqStepTime').value || '8');
-        seqIdx = (seqIdx + 1) % steps.length;
-        applyStep(steps[seqIdx]);
-        seqTimer = setTimeout(tick, stepTime * 1000);
-      };
-      const stepTime = parseFloat(document.getElementById('seqStepTime').value || '8');
-      seqTimer = setTimeout(tick, stepTime * 1000);
-    }
-
-    function stopSeq(restore = false) {
-      seqOn = false;
-      document.getElementById('seqToggle').innerText = 'Start Sequencer';
-      document.getElementById('seqLed').classList.remove('active');
-      if (seqTimer) {
-        clearTimeout(seqTimer);
-        seqTimer = null;
-      }
-      if (restore) {
-        const now = audioCtx.currentTime;
-        const tau = 0.2;
-        masterFilter.frequency.setTargetAtTime(baseFilterHz, now, tau);
-        ringModGain.gain.setTargetAtTime(baseRingDepth, now, tau);
-      }
-    }
-
-    // ========== UI EVENT HANDLERS ==========
-    // Tab switching
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-        btn.classList.add('active');
-        document.querySelector(`[data-tab="${btn.dataset.tab}"].tab-content`).classList.add('active');
-      });
-    });
-
-    // Oscillator controls
-    document.querySelectorAll('.knob.volume').forEach((knob) => {
-      knob.addEventListener('input', (e) => {
-        const type = e.target.dataset.type;
-        const v = parseFloat(e.target.value);
-        gains[type].gain.value = Math.max(MIN_VOICE_GAIN, v);
-        updateVoiceLED(type, v);
-      });
-    });
-
-    document.querySelectorAll('.knob.pitch').forEach((knob) => {
-      knob.addEventListener('input', (e) => {
-        const type = e.target.dataset.type;
-        const val = parseFloat(e.target.value);
-        pitches[type] = val;
-        oscillators[type].l.frequency.value = val;
-        oscillators[type].r.frequency.value = val; // Binaural applied later
-      });
-    });
-
-    document.querySelectorAll('.knob.pan').forEach((knob) => {
-      knob.addEventListener('input', (e) => {
-        const type = e.target.dataset.type;
-        const v = parseFloat(e.target.value);
-        panners[type].pan.value = v;
-        panBase[type] = v;
-      });
-    });
-
-    function updateVoiceLED(voice, volume) {
-      const led = document.querySelector(`[data-voice="${voice}"]`);
-      if (led) {
-        if (volume > 0.05) {
-          led.classList.add('active');
-        } else {
-          led.classList.remove('active');
-        }
-      }
-    }
-
-    // Wave morph
-    document.getElementById('waveMorph')?.addEventListener('input', (e) => {
-      const val = parseFloat(e.target.value);
-      let sineLevel = 0, squareLevel = 0, sawLevel = 0;
-      if (val <= 0.5) {
-        sineLevel = 1 - (val / 0.5);
-        squareLevel = val / 0.5;
-        sawLevel = 0;
-      } else {
-        sineLevel = 0;
-        squareLevel = 1 - ((val - 0.5) / 0.5);
-        sawLevel = (val - 0.5) / 0.5;
-      }
-      gains['sine'].gain.value = Math.max(MIN_VOICE_GAIN, sineLevel);
-      gains['square'].gain.value = Math.max(MIN_VOICE_GAIN, squareLevel);
-      gains['sawtooth'].gain.value = Math.max(MIN_VOICE_GAIN, sawLevel);
-      updateVoiceLED('sine', sineLevel);
-      updateVoiceLED('square', squareLevel);
-      updateVoiceLED('sawtooth', sawLevel);
-    });
-
-    // Pulse width
-    document.getElementById('pulseWidth')?.addEventListener('input', (e) => {
-      pulseWidth = parseFloat(e.target.value) || 0.5;
-      basePulseWidth = pulseWidth;
-      const wave = makePulseWave(pulseWidth);
-      oscillators['pulse'].l.setPeriodicWave(wave);
-      oscillators['pulse'].r.setPeriodicWave(wave);
-      if (pulseCompGain) pulseCompGain.gain.value = getPWMCompensation(pulseWidth);
-    });
-
-    // Cross modulation
-    document.getElementById('crossMod')?.addEventListener('input', (e) => {
-      const amount = parseFloat(e.target.value);
-      const rate = parseFloat(document.getElementById('crossModRate').value || '5');
-      startCrossMod(amount, rate);
-    });
-
-    document.getElementById('crossModRate')?.addEventListener('input', (e) => {
-      const amount = parseFloat(document.getElementById('crossMod').value || '0');
-      const rate = parseFloat(e.target.value);
-      startCrossMod(amount, rate);
-    });
-
-    // Effects
-    document.getElementById('reverb')?.addEventListener('input', (e) => {
-      fdnReverb.wet.gain.value = parseFloat(e.target.value);
-    });
-    
-    document.getElementById('reverbDecay')?.addEventListener('input', (e) => {
-      fdnReverb.setDecay(parseFloat(e.target.value));
-    });
-
-    document.getElementById('distortion')?.addEventListener('input', (e) => {
-      distortion.curve = makeSaturationCurve(parseFloat(e.target.value));
-    });
-    
-    // Using Hysteresis slot for simple 2nd stage sat
-    document.getElementById('distortion2')?.addEventListener('input', (e) => {
-      distortion2.curve = makeSaturationCurve(parseFloat(e.target.value) * 2);
-    });
-
-    document.getElementById('tremolo')?.addEventListener('input', (e) => {
-      tremoloOsc.frequency.value = parseFloat(e.target.value);
-    });
-
-    document.getElementById('filterFreq')?.addEventListener('input', (e) => {
-      const v = parseFloat(e.target.value);
-      masterFilter.frequency.value = v;
-      baseFilterHz = v;
-    });
-    
-    document.getElementById('filterRes')?.addEventListener('input', (e) => {
-      masterFilter.Q.value = parseFloat(e.target.value);
-    });
-
-    document.getElementById('delayTime')?.addEventListener('input', (e) => {
-      delayNode.delayTime.value = parseFloat(e.target.value);
-    });
-
-    document.getElementById('delayFeedback')?.addEventListener('input', (e) => {
-      delayFeedbackGain.gain.value = parseFloat(e.target.value);
-    });
-
-    // Modulation
-    document.getElementById('lfoSpeed')?.addEventListener('input', (e) => {
-      lfo.frequency.value = parseFloat(e.target.value);
-    });
-
-    document.getElementById('lfoDepth')?.addEventListener('input', (e) => {
-      lfoGain.gain.value = parseFloat(e.target.value) / 1000;
-    });
-
-    document.getElementById('ringModFreq')?.addEventListener('input', (e) => {
-      ringModOsc.frequency.value = parseFloat(e.target.value);
-    });
-
-    document.getElementById('ringModDepth')?.addEventListener('input', (e) => {
-      const v = parseFloat(e.target.value);
-      ringModGain.gain.value = v;
-      baseRingDepth = v;
-    });
-
-    document.getElementById('randAmount')?.addEventListener('input', (e) => {
-      randAmt = parseFloat(e.target.value) || 0;
-      applyRandom(lastRand);
-    });
-
-    // Envelope follower
-    let envFollowInterval = null;
-    document.getElementById('envFollow')?.addEventListener('input', (e) => {
-      const sensitivity = parseFloat(e.target.value);
-      if (envFollowInterval) clearInterval(envFollowInterval);
-      if (sensitivity > 0) {
-        envFollowInterval = setInterval(() => {
-          analyser.getByteTimeDomainData(dataArray);
-          let sum = 0;
-          for (let i = 0; i < dataArray.length; i++) {
-            sum += Math.abs(dataArray[i] - 128);
-          }
-          const level = (sum / dataArray.length) / 128;
-          sources.Env = level; // Matrix Update
-          
-          const modAmount = level * sensitivity;
-          const filterMod = parseFloat(document.getElementById('envToFilter').value || '0');
-          if (filterMod > 0) {
-            const targetFreq = baseFilterHz * (1 + modAmount * filterMod * 5);
-            masterFilter.frequency.setTargetAtTime(Math.min(16000, targetFreq), audioCtx.currentTime, 0.05);
-          }
-        }, 50);
-      }
-    });
-
-    document.getElementById('envToFilter')?.addEventListener('input', () => {
-      const sensitivity = parseFloat(document.getElementById('envFollow').value || '0');
-      document.getElementById('envFollow').dispatchEvent(new Event('input'));
-    });
-
-    // Probability gate
-    document.getElementById('probGate')?.addEventListener('input', (e) => {
-      const chance = parseFloat(e.target.value);
-      const rate = parseFloat(document.getElementById('probRate').value || '2');
-      startProbabilityGate(chance, rate);
-    });
-
-    document.getElementById('probRate')?.addEventListener('input', (e) => {
-      const chance = parseFloat(document.getElementById('probGate').value || '1');
-      const rate = parseFloat(e.target.value);
-      startProbabilityGate(chance, rate);
-    });
-
-    // Step sequencer
-    document.getElementById('seqToggle')?.addEventListener('click', () => {
-      if (!seqOn) startSeq();
-      else stopSeq(true);
-    });
-
-    document.getElementById('seqRandomize')?.addEventListener('click', () => {
-      stepIds.forEach(id => {
-        const el = document.getElementById(id);
-        el.value = (Math.random() * 2 - 1).toFixed(2);
-      });
-    });
-
-    // Layers (RESTORED EVENT LISTENERS)
-    document.getElementById('supersawVolume')?.addEventListener('input', (e) => {
-      supersawGain.gain.value = parseFloat(e.target.value);
-    });
-
-    document.getElementById('shimmerVolume')?.addEventListener('input', (e) => {
-      shimmerGain.gain.value = parseFloat(e.target.value);
-    });
-
-    document.getElementById('harmonizerVolume')?.addEventListener('input', (e) => {
-      harmonizerGain.gain.value = parseFloat(e.target.value);
-    });
-
-    document.getElementById('harmonizerPitch')?.addEventListener('input', (e) => {
-      const semitones = parseFloat(e.target.value);
-      const ratio = Math.pow(2, semitones / 12);
-      harmonizerPitchGain.gain.value = 0.005 * (ratio - 1);
-    });
-
-    document.getElementById('chorusVolume')?.addEventListener('input', (e) => {
-      chorusGain.gain.value = parseFloat(e.target.value);
-    });
-
-    document.getElementById('wowFlutterVolume')?.addEventListener('input', (e) => {
-      wowFlutterGain.gain.value = parseFloat(e.target.value);
-    });
-
-    document.getElementById('granularDepth')?.addEventListener('input', (e) => {
-      granularGain.gain.value = parseFloat(e.target.value);
-    });
-
-    document.getElementById('granularRate')?.addEventListener('input', (e) => {
-      clearInterval(granularInterval);
-      const rate = parseFloat(e.target.value);
-      if (rate > 0) granularInterval = setInterval(() => playGranular(), 1000 / rate);
-    });
-
-    // Texture (RESTORED EVENT LISTENERS)
-    document.getElementById('radioVolume')?.addEventListener('input', (e) => {
-      sdrGain.gain.value = parseFloat(e.target.value);
-    });
-
-    document.getElementById('radioTuning')?.addEventListener('input', (e) => {
-      const freq = 3000 + (parseFloat(e.target.value) / 100) * 27000;
-      sdrFilter.frequency.value = freq;
-      sdrDetuneGain.gain.value = 50 + (freq / 300);
-    });
-
-    document.getElementById('noiseColor')?.addEventListener('input', (e) => {
-      const t = Math.min(1, Math.max(0, parseFloat(e.target.value)));
-      const whiteAmt = Math.max(0, 1 - t * 2);
-      const brownAmt = Math.max(0, 2 * t - 1);
-      const pinkAmt = 1 - Math.abs(t * 2 - 1);
-      whiteMix.gain.value = whiteAmt;
-      pinkMix.gain.value = pinkAmt;
-      brownMix.gain.value = brownAmt;
-    });
-
-    document.getElementById('hazeMix')?.addEventListener('input', (e) => {
-      hazeMixGain.gain.value = parseFloat(e.target.value) || 0;
-    });
-
-    document.getElementById('hazeRate')?.addEventListener('input', (e) => {
-      const kHz = parseFloat(e.target.value) || 12;
-      const hz = kHz * 1000;
-      if (hazeNode?.port) hazeNode.port.postMessage({ rate: hz });
-    });
-
-    document.getElementById('subMix')?.addEventListener('input', (e) => {
-      subMixGain.gain.value = parseFloat(e.target.value) || 0;
-    });
-
-    document.getElementById('subLPCutoff')?.addEventListener('input', (e) => {
-      subLP.frequency.value = parseFloat(e.target.value) || 220;
-    });
-
-    // Granular Drag & Drop
-    document.body.addEventListener('dragover', e => { e.preventDefault(); document.body.classList.add('dragover'); });
-    document.body.addEventListener('dragleave', e => document.body.classList.remove('dragover'));
-    document.body.addEventListener('drop', e => {
-        e.preventDefault();
-        document.body.classList.remove('dragover');
-        const file = e.dataTransfer.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = ev => {
-                audioCtx.decodeAudioData(ev.target.result, buffer => {
-                    currentGranularBuffer = buffer;
-                    alert("Sample Loaded into Granular Engine");
-                });
-            };
-            reader.readAsArrayBuffer(file);
-        }
-    });
-    
-    // Matrix UI Logic
-    const modDestinations = [
-        {name: 'Filter Freq', param: masterFilter.frequency, scale: 5000},
-        {name: 'Reverb Mix', param: fdnReverb.wet.gain, scale: 1},
-        {name: 'Granular Rate', scale: 50}, // Custom logic
-        {name: 'Ring Mod Freq', param: ringModOsc.frequency, scale: 500}
-    ];
-    
-    document.getElementById('addMatrixRow').addEventListener('click', () => {
-        const row = document.createElement('div');
-        row.className = 'matrix-row';
-        row.innerHTML = `
-            <select class="mtx-src"><option value="LFO">LFO</option><option value="Env">Env</option><option value="Drift">Drift</option><option value="Seq">Seq</option></select>
-            <select class="mtx-dest">${modDestinations.map((d,i)=>`<option value="${i}">${d.name}</option>`).join('')}</select>
-            <input type="range" class="mtx-amt" min="-1" max="1" step="0.01" value="0">
-            <button onclick="this.parentElement.remove()" style="color:red; border:none; background:none; cursor:pointer;">X</button>
-        `;
-        document.getElementById('matrixRows').appendChild(row);
-    });
-
-    // Matrix Processing Loop (60fps)
-    function processMatrix() {
-        // Update Sources
-        sources.LFO = Math.sin(audioCtx.currentTime * lfo.frequency.value * 2 * Math.PI);
-        
-        const rows = document.querySelectorAll('.matrix-row');
-        rows.forEach(row => {
-            const srcName = row.querySelector('.mtx-src').value;
-            const destIdx = row.querySelector('.mtx-dest').value;
-            const amt = parseFloat(row.querySelector('.mtx-amt').value);
-            
-            const srcVal = sources[srcName] || 0;
-            const destObj = modDestinations[destIdx];
-            const modVal = srcVal * amt * destObj.scale;
-            
-            if(destObj.name === 'Granular Rate') {
-                const base = parseFloat(document.getElementById('granularRate').value);
-                const newVal = Math.max(0.1, base + modVal);
-                if(granularInterval) { 
-                    clearInterval(granularInterval); 
-                    granularInterval = setInterval(() => playGranular(), 1000 / newVal); 
-                }
-            } else if (destObj.param) {
-                destObj.param.setTargetAtTime(destObj.param.value + (modVal * 0.1), audioCtx.currentTime, 0.1); 
-            }
-        });
-        requestAnimationFrame(processMatrix);
-    }
-    processMatrix();
-
-    // Binaural & Master
-    document.getElementById('binauralBeat')?.addEventListener('input', (e) => {
-        const beatHz = parseFloat(e.target.value);
-        Object.keys(oscillators).forEach(type => {
-            // Detune Right channel slightly
-            const base = pitches[type] || 110;
-            oscillators[type].r.frequency.setTargetAtTime(base + beatHz, audioCtx.currentTime, 0.1);
-        });
-    });
-
-    // Standard Event Listeners from v14 (Keeping NO-OMIT promise by bulk re-applying logic)
-    document.getElementById('stereoWidth')?.addEventListener('input', (e) => {
-      const w = parseFloat(e.target.value);
-      sScale.gain.value = isFinite(w) ? w : 1;
-      baseStereoWidth = sScale.gain.value;
-    });
-
-    document.getElementById('autoEvolve')?.addEventListener('change', (e) => {
-      autoEvolveEnabled = e.target.checked;
-      document.getElementById('evolveLed').classList.toggle('active', autoEvolveEnabled);
-      if (autoEvolveEnabled) {
-        startAutoEvolve();
-        triggerEvolve();
-      } else {
-        if (autoEvolveTimer) clearInterval(autoEvolveTimer);
-      }
-    });
-
-    document.getElementById('evolveBtn')?.addEventListener('click', () => {
-      triggerEvolve();
-    });
-
-    // XY Pad logic
-    const xyPad = document.getElementById('xyPad');
-    const xyCursor = document.getElementById('xyCursor');
-    let xyActive = false;
-
-    function updateXYPad(x, y) {
-      const rect = xyPad.getBoundingClientRect();
-      const xNorm = Math.max(0, Math.min(1, x / rect.width));
-      const yNorm = 1 - Math.max(0, Math.min(1, y / rect.height));
-      xyCursor.style.left = (xNorm * 100) + '%';
-      xyCursor.style.top = ((1 - yNorm) * 100) + '%';
-      
-      // Map to selected params
-      const xId = document.getElementById('xyParamX').value;
-      const yId = document.getElementById('xyParamY').value;
-      const xEl = document.getElementById(xId);
-      const yEl = document.getElementById(yId);
-      
-      if(xEl) { xEl.value = parseFloat(xEl.min) + xNorm * (parseFloat(xEl.max)-parseFloat(xEl.min)); xEl.dispatchEvent(new Event('input')); }
-      if(yEl) { yEl.value = parseFloat(yEl.min) + yNorm * (parseFloat(yEl.max)-parseFloat(yEl.min)); yEl.dispatchEvent(new Event('input')); }
-    }
-
-    xyPad.addEventListener('mousedown', (e) => { xyActive = true; updateXYPad(e.clientX - xyPad.getBoundingClientRect().left, e.clientY - xyPad.getBoundingClientRect().top); });
-    document.addEventListener('mousemove', (e) => { if(xyActive) updateXYPad(e.clientX - xyPad.getBoundingClientRect().left, e.clientY - xyPad.getBoundingClientRect().top); });
-    document.addEventListener('mouseup', () => { xyActive = false; });
-
-    // Main Toggle
-    document.getElementById('toggleDrone')?.addEventListener('click', async () => {
-      await audioCtx.resume();
-      const on = outputBus.gain.value > 0.0001;
-      outputBus.gain.value = on ? 0 : 1;
-      document.getElementById('toggleDrone').innerText = on ? 'Start Drone' : 'Stop Drone';
-    });
-
-    // ========== VISUALIZATION ==========
-    const canvas = document.getElementById('visualizer');
-    const canvasCtx = canvas.getContext('2d');
-    const gonCanvas = document.getElementById('goniometer');
-    const gonCtx = gonCanvas.getContext('2d');
-
-    const waveL = new Uint8Array(analL.frequencyBinCount);
-    const waveR = new Uint8Array(analR.frequencyBinCount);
-
-    function draw() {
-      requestAnimationFrame(draw);
-
-      // Spectrum/Wave
-      analyser.getByteTimeDomainData(dataArray);
-      canvasCtx.fillStyle = 'rgb(10, 15, 16)';
-      canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
-      canvasCtx.lineWidth = 2;
-      canvasCtx.strokeStyle = '#0ff';
-      canvasCtx.beginPath();
-      const sliceWidth = canvas.width / bufferLength;
-      let x = 0;
-      for (let i = 0; i < bufferLength; i++) {
-        const v = dataArray[i] / 128.0;
-        const y = (v * canvas.height) / 2;
-        if (i === 0) canvasCtx.moveTo(x, y);
-        else canvasCtx.lineTo(x, y);
-        x += sliceWidth;
-      }
-      canvasCtx.stroke();
-
-      // Goniometer (Lissajous)
-      analL.getByteTimeDomainData(waveL);
-      analR.getByteTimeDomainData(waveR);
-      
-      gonCtx.fillStyle = 'rgba(0,0,0,0.2)'; // Fade trail
-      gonCtx.fillRect(0, 0, gonCanvas.width, gonCanvas.height);
-      gonCtx.lineWidth = 1;
-      gonCtx.strokeStyle = '#0f0';
-      gonCtx.beginPath();
-      
-      for(let i=0; i<waveL.length; i+=4) { // decimate for performance
-          const l = (waveL[i] - 128) / 128;
-          const r = (waveR[i] - 128) / 128;
-          // Rotate 45 degrees
-          const x = (r + l) * 0.5;
-          const y = (r - l) * 0.5;
-          
-          const drawX = (gonCanvas.width/2) + (x * gonCanvas.width/2);
-          const drawY = (gonCanvas.height/2) + (y * gonCanvas.height/2);
-          
-          if(i===0) gonCtx.moveTo(drawX, drawY);
-          else gonCtx.lineTo(drawX, drawY);
-      }
-      gonCtx.stroke();
-    }
-    draw();
-    
-    // Initialize Voice LEDs
-    waves.forEach(type => {
-      const volControl = document.querySelector(`[data-type="${type}"].volume`);
-      if (volControl) {
-        updateVoiceLED(type, parseFloat(volControl.value));
-      }
-    });
-
-    console.log('Viceroy Drone Synth Ultimate 3.1 Initialized');
-  </script>
+    };
+    fr.start(); setTimeout(()=>fr.stop(), 3000);
+  }
+});
+
+// FIX #13: Save Preset — serializes all slider/checkbox state to JSON download
+document.getElementById('savePreset')?.addEventListener('click', () => {
+  const state = getPresetState();
+  const blob  = new Blob([JSON.stringify(state, null, 2)], { type:'application/json' });
+  const url   = URL.createObjectURL(blob);
+  const a     = document.createElement('a');
+  a.href=url; a.download=`viceroy-preset-${Date.now()}.json`; a.click();
+  URL.revokeObjectURL(url);
+});
+
+// FIX #13: Load Preset — reads JSON and fires all input events
+document.getElementById('loadPreset')?.addEventListener('click', () => {
+  const input = document.createElement('input');
+  input.type='file'; input.accept='.json';
+  input.onchange = e => {
+    const file = e.target.files[0]; if(!file) return;
+    const reader = new FileReader();
+    reader.onload = ev => {
+      try { applyPresetState(JSON.parse(ev.target.result)); }
+      catch(err) { alert('Invalid preset file'); }
+    };
+    reader.readAsText(file);
+  };
+  input.click();
+});
+
+// Randomize
+document.getElementById('randomizeBtn')?.addEventListener('click', () => {
+  document.querySelectorAll('input[type="range"]').forEach(el => {
+    const min=parseFloat(el.min||'0'), max=parseFloat(el.max||'1');
+    el.value = (min + Math.random()*(max-min)).toFixed(4);
+    el.dispatchEvent(new Event('input'));
+  });
+});
+
+// Matrix UI
+document.getElementById('addMatrixRow')?.addEventListener('click', () => {
+  const row = document.createElement('div');
+  row.className = 'matrix-row';
+  row.innerHTML = `
+    <select class="mtx-src">
+      <option value="LFO">LFO</option>
+      <option value="Env">Env</option>
+      <option value="Drift">Drift</option>
+      <option value="Seq">Seq</option>
+    </select>
+    <select class="mtx-dest">
+      ${modDestinations.map((d,i)=>`<option value="${i}">${d.name}</option>`).join('')}
+    </select>
+    <input type="range" class="mtx-amt" min="-1" max="1" step="0.01" value="0">
+    <button onclick="this.parentElement.remove()" style="color:red;border:none;background:none;cursor:pointer;font-size:1.1rem;">✕</button>
+  `;
+  document.getElementById('matrixRows').appendChild(row);
+});
+
+// Drag & drop to granular
+document.body.addEventListener('dragover', e => { e.preventDefault(); document.body.classList.add('dragover'); });
+document.body.addEventListener('dragleave', () => document.body.classList.remove('dragover'));
+document.body.addEventListener('drop', e => {
+  e.preventDefault(); document.body.classList.remove('dragover');
+  const file = e.dataTransfer.files[0]; if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    audioCtx.decodeAudioData(ev.target.result,
+      buf => { currentGranularBuffer=buf; alert('Sample loaded into Granular Engine'); },
+      err => alert('Could not decode audio: '+err)
+    );
+  };
+  reader.readAsArrayBuffer(file);
+});
+
+// Init LEDs
+waves.forEach(type => {
+  const v = document.querySelector(`[data-type="${type}"].volume`);
+  if (v) updateVoiceLED(type, parseFloat(v.value));
+});
+
+console.log('✅ Viceroy Drone Synth 3.2 — All 20 fixes applied and active.');
+</script>
 </body>
-</html>
-    
-  </body>
-  
 </html>
